@@ -1,0 +1,35 @@
+/*
+colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU 
+*/
+
+.skyblue{
+    background-color: #84CFFF;
+}
+
+.pigred {
+    background-color: #FF867C;
+}
+
+.grassgreen{
+    background-color: #7CFF93;
+}
+
+.trumporange{
+    background-color: #FFC57C;
+}
+
+.data {
+    width: 50%;
+    max-width: 50%;
+}
+
+.rounded {
+    border-radius: 32px;
+}
+
+.container {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    max-width: 50%;
+}

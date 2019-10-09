@@ -9,11 +9,12 @@ class Weather extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&appid=4ab2152ab8763e7e54aae7d10515dc07', {
+        /*fetch('https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&appid=4ab2152ab8763e7e54aae7d10515dc07', {
             method: 'get'
         })
             .then(result => result.json())
             .then(weather => this.setState({ weather: weather, loading: false}))
+            */
     }
 
 
@@ -21,7 +22,7 @@ class Weather extends Component {
         return (
             <div>
                 <div>{this.state.loading ?
-                    (<div>Loading data...</div>) :
+                    (<div>Loading weather</div>) :
                     (<div>{this.state.weather.main.temp}</div>)}
                 </div>
             </div>

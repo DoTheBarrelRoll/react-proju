@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import Weather from './Weather';
 import Movie from './Movie';
+import './css/custom.css';
+import './css/bulma-0.7.5/css/bulma.css';
 
 class App extends Component {
 
@@ -10,10 +11,22 @@ class App extends Component {
     this.state = { loading: true };
   }
 
-  
+
   render() {
-    return(
-      <div className='App-header'><Movie /> <Weather /></div>
+    return (
+      <div className='container'>
+        <div className='columns'>
+          <div className='column auto'>
+            <input type="text" className="input is-tiny" placeholder="Where are you?" />
+          </div>
+          <div className='column is-one-quarter'>
+            <button className="button is-fullwidth is-success" >Button</button>
+          </div>
+
+        </div>
+        <div className='skyblue'><Movie /><Weather />
+        </div>
+      </div>
     )
   }
 }

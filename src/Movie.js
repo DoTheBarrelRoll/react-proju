@@ -9,11 +9,12 @@ class Movie extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.themoviedb.org/3/movie/550?api_key=79d3c1eee6d11a1dad4fefb18da19ce8', {
+        /*fetch('https://api.themoviedb.org/3/movie/550?api_key=79d3c1eee6d11a1dad4fefb18da19ce8', {
             method: 'get'
         })
             .then(result => result.json())
             .then(movie => this.setState({ movie: movie, loading: false }))
+            */
     }
 
 
@@ -21,7 +22,7 @@ class Movie extends Component {
     render() {
         return (
             <div>{this.state.loading ?
-                (<div>Loading data...</div>) :
+                (<div>Loading movies</div>) :
                 (<div>{this.state.movie.original_title}</div>)}
             </div>
         )
