@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Weather from './Weather';
+import Movie from './Movie';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+
+  
+  render() {
+    return(
+      <div className='App-header'><Movie /> <Weather /></div>
+    )
+  }
 }
 
+
 export default App;
+
+/*
+http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
+Key: 4ab2152ab8763e7e54aae7d10515dc07
+
+TMDB key: 79d3c1eee6d11a1dad4fefb18da19ce8
+*/
