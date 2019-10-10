@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
 import Weather from './Weather';
 import Movie from './Movie';
-import './css/custom.css';
+import Location from './Location';
 import './css/bulma-0.7.5/css/bulma.css';
+import './css/custom.css';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { loading: true };
+    this.state = { loading: true, position: null};
   }
 
+  fetchCoords = (pos) => {
+    this.setState({ position: pos});
+  }
 
   render() {
     return (
-      <div className='container'>
+      <div className='container skyblue rounded'>
         <div className='columns'>
-          <div className='column auto'>
-            <input type="text" className="input is-tiny" placeholder="Where are you?" />
+          <div className='column is-half'>
+            <input type="text" className="input is-large padded-right" /*onChange={this.handleChange}*/ placeholder="Where are you?" />
           </div>
-          <div className='column is-one-quarter'>
-            <button className="button is-fullwidth is-success" >Button</button>
+          <div>
+            <Location locationData= { this.fetchCoords.bind(this) } />
           </div>
-
+          <div className='column'>
+            <button onClick={this.onClick}className="button is-fullwidth is-success" >Search</button>
+          </div>
         </div>
-        <div className='skyblue'><Movie /><Weather />
+
+        <div className='skyblue'>
+          <Movie /><Weather position={this.state.position}/>
         </div>
       </div>
     )

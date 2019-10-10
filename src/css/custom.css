@@ -2,12 +2,25 @@
 colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU 
 */
 
+.activeText{
+    color: rgba(0, 0, 0, 223);
+}
+
+.inactiveText{
+    color: rgba(0, 0, 0, 97);
+}
+
+.superActiveText{
+    color: #FF867C;
+}
+
 .skyblue{
     background-color: #84CFFF;
 }
 
 .pigred {
     background-color: #FF867C;
+    color: #FFFFFF;
 }
 
 .grassgreen{
@@ -28,8 +41,43 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 }
 
 .container {
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top: 64px;
+    padding: 32px;
+    margin: auto;
     width: 50%;
     max-width: 50%;
 }
+
+.padded-right{
+    padding-right: 50px;
+}
+
+.locateButton {
+    margin-left: -75px;
+    margin-top: 5px;
+    border: 0px;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    padding-top: calc(0.375em - 1px);
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .locateButton:hover, .locateButton.is-hovered {
+    color: #363636;
+  }
+  
+  .locateButton:focus, .locateButton.is-focused {
+    color: #FF867C;
+  }
+  
+  .locateButton:focus:not(:active), .locateButton.is-focused:not(:active) {
+    box-shadow: none;
+  }
+  
+  .locateButton:active, .locateButton.is-active {
+    color: #FF3424;
+  }
