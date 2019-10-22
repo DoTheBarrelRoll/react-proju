@@ -8,9 +8,18 @@ class Weather extends Component {
         this.state = { loading: true, weather: null };
     }
 
+    shouldComponentUpdate() {
+        if (this.state.weather) {
+            return(false)
+        } else {
+            return(true)
+        }
+    }
+
     // If props update, execute this
     componentDidUpdate(prevProps) {
         // If position prop from parent updates, fetch the weather on that position
+        let self = this;
         if (this.props.position !== prevProps.position) {
             fetch('https://api.openweathermap.org/data/2.5/weather?lat='
                 + this.props.position.coords.latitude
@@ -20,8 +29,13 @@ class Weather extends Component {
                 method: 'get'
             })
                 .then(result => result.json())
-                .then(weather => this.setState({ weather: weather, loading: false }))
+                .then(weather => this.setState({ weather: weather, loading: false}))
+                
+        } else {
+            self.props.getLocation(self.state.weather);
         }
+
+        
     }
 
     render() {
@@ -34,7 +48,6 @@ class Weather extends Component {
             </div>
         )
     }
-
 }
 
 
