@@ -23,19 +23,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container skyblue rounded'>
-        <div className='columns'>
+
+      <div className=''>  
+    
+        <div className='container centered'>
+          <div className='centerBox skyblue'>
+          <div className='columns'>
           <div className='column is-half'>
-            <SearchBar location={this.state.location}/>
+            <SearchBar location={ this.state.location }/>
           </div>
-          <div>
+          <div className='column'>
             <Location locationData= { this.fetchCoords.bind(this) } />
           </div>
           <div className='column'>
-            <button onClick={this.onClick} className="button is-fullwidth is-success" >Search</button>
+            <button onClick={this.onClick} className="button is-medium is-dark" >Search</button>
+          </div>
           </div>
         </div>
-
+      </div>
         <div className='skyblue'>
           <Movie /><Weather position={this.state.position} getLocation={this.fetchLocation.bind(this)}/>
         </div>

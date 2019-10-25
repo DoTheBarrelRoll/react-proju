@@ -26,9 +26,7 @@ class Location extends Component {
 
     render() {
         return(
-            <div className='column is-one-quarter'>
                 <button className={this.state.buttonStyling} onClick={this.handleClick}>{this.state.buttonStatus}</button>
-            </div>
         )
     }
 

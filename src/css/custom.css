@@ -31,30 +31,27 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
     background-color: #FFC57C;
 }
 
-.data {
-    width: 50%;
-    max-width: 50%;
-}
-
 .rounded {
-    border-radius: 32px;
-}
-
-.container {
-    margin-top: 64px;
-    padding: 32px;
-    margin: auto;
-    width: 50%;
-    max-width: 50%;
+    border-radius: 12px;
 }
 
 .padded-right{
     padding-right: 50px;
 }
 
+.centered {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.centerBox {
+    padding: 32px;
+    padding-top: 64px;
+}
+
 .locateButton {
-    margin-left: -75px;
-    margin-top: 5px;
     border: 0px;
     cursor: pointer;
     justify-content: center;

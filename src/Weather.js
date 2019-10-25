@@ -32,7 +32,7 @@ class Weather extends Component {
                 .then(weather => this.setState({ weather: weather, loading: false}))
                 
         } else {
-            self.props.getLocation(self.state.weather);
+            self.props.getLocation(self.state.weather)
         }
 
         
@@ -43,7 +43,7 @@ class Weather extends Component {
             <div>
                 <div>{this.state.loading ?
                     (<div>Waiting for weather...</div>) :
-                    (<div>In {this.state.weather.name}, currently it's {this.state.weather.main.temp} °C</div>)}
+                    (<div>In {this.state.weather.name}, {this.state.weather.sys.country} currently it's {this.state.weather.main.temp} °C</div>)}
                 </div>
             </div>
         )
