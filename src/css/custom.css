@@ -2,79 +2,117 @@
 colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU 
 */
 
-.activeText{
-    color: rgba(0, 0, 0, 223);
+.activeText {
+  color: rgba(0, 0, 0, 223);
 }
 
-.inactiveText{
-    color: rgba(0, 0, 0, 97);
+.inactiveText {
+  color: rgba(0, 0, 0, 97);
 }
 
-.superActiveText{
-    color: #FF867C;
+.superActiveText {
+  color: #FF867C;
 }
 
-.skyblue{
-    background-color: #84CFFF;
+.skyblue {
+  background-color: #84CFFF;
 }
 
 .pigred {
-    background-color: #FF867C;
-    color: #FFFFFF;
+  background-color: #FF867C;
+  color: #FFFFFF;
 }
 
-.grassgreen{
-    background-color: #7CFF93;
+.grassgreen {
+  background-color: #7CFF93;
 }
 
-.trumporange{
-    background-color: #FFC57C;
+.trumporange {
+  background-color: #FFC57C;
 }
 
 .rounded {
-    border-radius: 12px;
+  border-radius: 12px;
 }
 
-.padded-right{
-    padding-right: 50px;
+.padded-right {
+  padding-right: 50px;
 }
 
 .centered {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .centerBox {
-    padding: 32px;
-    padding-top: 64px;
+  padding: 32px;
+  padding-top: 64px;
 }
 
 .locateButton {
-    border: 0px;
-    cursor: pointer;
-    justify-content: center;
-    padding-bottom: calc(0.375em - 1px);
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-    padding-top: calc(0.375em - 1px);
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  .locateButton:hover, .locateButton.is-hovered {
-    color: #363636;
-  }
-  
-  .locateButton:focus, .locateButton.is-focused {
-    color: #FF867C;
-  }
-  
-  .locateButton:focus:not(:active), .locateButton.is-focused:not(:active) {
-    box-shadow: none;
-  }
-  
-  .locateButton:active, .locateButton.is-active {
-    color: #FF3424;
-  }
+  border: 0px;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: calc(0.375em - 1px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.locatedButton {
+  border: 0px;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: calc(0.375em - 1px);
+  text-align: center;
+  white-space: nowrap;
+  color: #FF3432;
+}
+
+.locatedButton:hover,
+.locatedButton.is-hovered {
+  color: #FF867C;
+}
+
+.locateButton:hover,
+.locateButton.is-hovered {
+  color: #363636;
+}
+
+.locatedButton:focus,
+.locatedButton.is-focused {
+  color: #FF3424;
+}
+
+.locateButton:focus,
+.locateButton.is-focused {
+  color: #000000;
+}
+
+.locatedButton:focus:not(:active),
+.locatedButton.is-focused:not(:active) {
+  box-shadow: none;
+}
+
+.locateButton:focus:not(:active),
+.locateButton.is-focused:not(:active) {
+  box-shadow: none;
+}
+
+
+.locateButton:active,
+.locateButton.is-active {
+  color: #FF867C;
+}
+
+.locatedButton:active,
+.locatedButton.is-active {
+  color: #FF867C;
+}

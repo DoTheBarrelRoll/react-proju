@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Weather from './Weather';
 import Movie from './Movie';
-import Location from './Location';
 import SearchBar from './SearchBar';
 import './css/bulma-0.7.5/css/bulma.css';
 import './css/custom.css';
@@ -10,39 +9,29 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { loading: true, position: null, location: null};
+    this.state = { loading: true, position: null, location: null, searchString: null };
   }
 
   fetchCoords = (pos) => {
-    this.setState({ position: pos});
+    this.setState({ position: pos });
   }
 
   fetchLocation = (weather) => {
-   this.setState({location: weather})
+    this.setState({ location: weather })
   }
 
   render() {
     return (
 
-      <div className=''>  
-    
+      <div className=''>
+
         <div className='container centered'>
           <div className='centerBox skyblue'>
-          <div className='columns'>
-          <div className='column is-half'>
-            <SearchBar location={ this.state.location }/>
-          </div>
-          <div className='column'>
-            <Location locationData= { this.fetchCoords.bind(this) } />
-          </div>
-          <div className='column'>
-            <button onClick={this.onClick} className="button is-medium is-dark" >Search</button>
-          </div>
+            <SearchBar locationData={this.fetchCoords.bind(this)} />
           </div>
         </div>
-      </div>
         <div className='skyblue'>
-          <Movie /><Weather position={this.state.position} getLocation={this.fetchLocation.bind(this)}/>
+          <Movie /><Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
         </div>
       </div>
     )
@@ -51,10 +40,3 @@ class App extends Component {
 
 
 export default App;
-
-/*
-http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-Key: 4ab2152ab8763e7e54aae7d10515dc07
-
-TMDB key: 79d3c1eee6d11a1dad4fefb18da19ce8
-*/
