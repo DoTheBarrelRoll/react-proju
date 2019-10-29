@@ -5,7 +5,7 @@ class Weather extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { loading: true, weather: null };
+        this.state = { loading: true, weather: null, error: null };
     }
 
     shouldComponentUpdate() {
@@ -13,6 +13,14 @@ class Weather extends Component {
             return(false)
         } else {
             return(true)
+        }
+    }
+
+    handleErrors = (response) => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        } else {
+            return response;
         }
     }
 
@@ -31,8 +39,18 @@ class Weather extends Component {
                 .then(result => result.json())
                 .then(weather => this.setState({ weather: weather, loading: false}))
                 
+        } else if (this.props.searchString !== prevProps.searchString){
+            fetch('https://api.openweathermap.org/data/2.5/weather?q='
+            + this.props.searchString
+            + '&units=metric&appid=4ab2152ab8763e7e54aae7d10515dc07')
+            .then(response => this.handleErrors(response))
+            .then(result => result.json())
+            .then(weather => this.setState({ weather: weather, loading: false}))
+            .catch(error => console.log(error))
+            
         } else {
             self.props.getLocation(self.state.weather)
+            console.log(this.state.weather)
         }
 
         

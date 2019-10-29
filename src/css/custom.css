@@ -31,12 +31,31 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   background-color: #FFC57C;
 }
 
+.has-shadow {
+  box-shadow: 4px 4px 4px 0.125em rgba(10, 10, 10, 0.25);
+}
 .rounded {
   border-radius: 12px;
 }
 
+.is-padded {
+  padding: 0.75rem;
+}
+
 .padded-right {
-  padding-right: 50px;
+  padding-right: 16px;
+}
+
+.padded-left {
+  padding-left: 16px;
+}
+
+.rounded-left {
+ border-radius: 4px 0 0 4px;
+}
+
+.rounded-right {
+ border-radius: 0 4px 4px 0;
 }
 
 .centered {

@@ -9,8 +9,12 @@ class SearchBar extends Component {
         super(props);
         this.state = {
             loading: true, buttonStatus: <FontAwesomeIcon icon={faSearchLocation} />, buttonStyling: 'button is-medium inactiveText locateButton',
-            geoData: null
+            geoData: null,
+            searchString: null
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleClick = () => {
@@ -29,23 +33,41 @@ class SearchBar extends Component {
         }
     }
 
-    /*  handleChange(event) {
-          this.setState({value: this.props.location.name});
-      } */
+    handleChange = (event) => {
+        this.setState({ searchString: event.target.value })
+    }
+
+    handleSubmit = (event) => {
+        this.props.locationName(this.state.searchString);    
+        event.preventDefault();
+    }
 
     render() {
         return (
-                <div className='columns'>
-                    <div className='column is-half'>
-                        <input type="text" className="input is-medium padded-right" placeholder="Where are you?" />
-                    </div>
-                    <div className='column'>
-                        <button className={this.state.buttonStyling} onClick={this.handleClick}>{this.state.buttonStatus}</button>
-                    </div>
-                    <div className='column'>
-                        <button onClick={this.onClick} className="button is-medium is-dark" >Search</button>
-                    </div>
+
+            <div className='field is-grouped is-padded'>
+                <div className=''>
+                    <button className={this.state.buttonStyling}
+                        onClick={this.handleClick}>{this.state.buttonStatus}</button>
                 </div>
+                <div className="">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="field is-grouped padded-left">
+                            <div className=''>
+                                <input type="text"
+                                    className="input is-medium rounded-left"
+                                    placeholder="Where are you?"
+                                    value={this.state.value}
+                                    onChange={this.handleChange}>
+                                </input>
+                            </div>
+                            <div className="">
+                                <input className="button is-dark is-medium rounded-right" type="submit"></input>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         )
     }
 }

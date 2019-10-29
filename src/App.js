@@ -16,6 +16,10 @@ class App extends Component {
     this.setState({ position: pos });
   }
 
+  fetchSearchString = (name) => {
+    this.setState({ searchString: name})
+  }
+
   fetchLocation = (weather) => {
     this.setState({ location: weather })
   }
@@ -26,8 +30,8 @@ class App extends Component {
       <div className=''>
 
         <div className='container centered'>
-          <div className='centerBox skyblue'>
-            <SearchBar locationData={this.fetchCoords.bind(this)} />
+          <div className='centerBox skyblue has-shadow'>
+            <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
           </div>
         </div>
         <div className='skyblue'>
