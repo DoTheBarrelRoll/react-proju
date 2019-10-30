@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Weather from './Weather';
+import WeatherNew from './WeatherNew';
 import Movie from './Movie';
 import SearchBar from './SearchBar';
 import './css/bulma-0.7.5/css/bulma.css';
@@ -12,14 +12,17 @@ class App extends Component {
     this.state = { loading: true, position: null, location: null, searchString: null };
   }
 
+  // Callback function to fetch location data from SearchBar component
   fetchCoords = (pos) => {
     this.setState({ position: pos });
   }
 
+  // Callback function to fetch search string from SearchBar component
   fetchSearchString = (name) => {
     this.setState({ searchString: name})
   }
 
+  // Callback function to fetch location from weather API query to be then displayed on the page
   fetchLocation = (weather) => {
     this.setState({ location: weather })
   }
@@ -28,14 +31,11 @@ class App extends Component {
     return (
 
       <div className=''>
-
-        <div className='container centered'>
-          <div className='centerBox skyblue has-shadow'>
+        
             <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
-          </div>
-        </div>
+
         <div className='skyblue'>
-          <Movie /><Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
+          <Movie /><WeatherNew position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
         </div>
       </div>
     )

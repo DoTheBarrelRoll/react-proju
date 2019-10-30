@@ -31,8 +31,12 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   background-color: #FFC57C;
 }
 
+.warningyellow{
+  background-color: #fff200;
+}
+
 .has-shadow {
-  box-shadow: 4px 4px 4px 0.125em rgba(10, 10, 10, 0.25);
+  box-shadow: 2px 2px 4px 0.05em rgba(10, 10, 10, 0.25);
 }
 .rounded {
   border-radius: 12px;
@@ -42,12 +46,32 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   padding: 0.75rem;
 }
 
+.margin-left-is-auto{
+  margin-left: auto;
+}
+
 .padded-right {
   padding-right: 16px;
 }
 
+.padded-right-more {
+  padding-right: 32px;
+}
+
+.padded-right-most {
+  padding-right: 64px;
+}
+
 .padded-left {
   padding-left: 16px;
+}
+
+.padded-left-more {
+  padding-left: 32px;
+}
+
+.padded-left-most {
+  padding-left: 64px;
 }
 
 .rounded-left {
@@ -56,6 +80,14 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 
 .rounded-right {
  border-radius: 0 4px 4px 0;
+}
+
+.is-hidden {
+  visibility: hidden;
+}
+
+.is-shown {
+  visibility: show;
 }
 
 .centered {
@@ -80,6 +112,7 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   padding-top: calc(0.375em - 1px);
   text-align: center;
   white-space: nowrap;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
 }
 
 .locatedButton {
@@ -92,7 +125,8 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   padding-top: calc(0.375em - 1px);
   text-align: center;
   white-space: nowrap;
-  color: #FF3432;
+  color: #ff3432;
+  box-shadow: inset 0 1px 2px rgba(255, 52, 50, 1);
 }
 
 .locatedButton:hover,
@@ -108,6 +142,7 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 .locatedButton:focus,
 .locatedButton.is-focused {
   color: #FF3424;
+  box-shadow: inset 0 1px 2px rgba(255, 52, 50, 1);
 }
 
 .locateButton:focus,
@@ -117,12 +152,12 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 
 .locatedButton:focus:not(:active),
 .locatedButton.is-focused:not(:active) {
-  box-shadow: none;
+  box-shadow: inset 0 1px 2px rgba(255, 52, 50, 1);
 }
 
 .locateButton:focus:not(:active),
 .locateButton.is-focused:not(:active) {
-  box-shadow: none;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
 }
 
 
@@ -134,4 +169,28 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 .locatedButton:active,
 .locatedButton.is-active {
   color: #FF867C;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.overrideh1 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.is-big-icon {
+  font-size: 1.25em;
+}
+
+.is-clickable {
+  cursor: pointer;
 }
