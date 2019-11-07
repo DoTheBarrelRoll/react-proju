@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WeatherNew from './WeatherNew';
+import Weather from './Weather';
 import Movie from './Movie';
 import SearchBar from './SearchBar';
 import './css/bulma-0.7.5/css/bulma.css';
@@ -34,8 +34,9 @@ class App extends Component {
         
             <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
 
-        <div className='skyblue'>
-          <Movie /><WeatherNew position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
+        <div className='skyblue container'>
+         <Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
+         <Movie />
         </div>
       </div>
     )

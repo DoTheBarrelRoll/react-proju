@@ -14,8 +14,25 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   color: #FF867C;
 }
 
+.text-is-small {
+  font-size: 12px;
+}
+
+.text-is-medium {
+  font-size: 18px;
+}
+
+.text-is-large {
+  font-size: 24px;
+}
+
 .skyblue {
   background-color: #84CFFF;
+}
+
+.milkwhite {
+  background-color: #FFFFFF;
+  color: 0, 0, 0, 0.7;
 }
 
 .pigred {
@@ -88,6 +105,10 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 
 .is-shown {
   visibility: show;
+}
+
+.is-level {
+  display: flex;
 }
 
 .centered {

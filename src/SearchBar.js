@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome';
-import { faSearchLocation } from '../node_modules/@fortawesome/free-solid-svg-icons';
-import { faTimes } from '../node_modules/@fortawesome/free-solid-svg-icons';
-import { faExclamationTriangle } from '../node_modules/@fortawesome/free-solid-svg-icons';
+import { faTimes, faExclamationTriangle, faSearchLocation } from '../node_modules/@fortawesome/free-solid-svg-icons';
 
 class SearchBar extends Component {
 
@@ -16,12 +14,13 @@ class SearchBar extends Component {
             buttonStyling: 'button is-medium inactiveText locateButton',
             geoData: null,
             searchString: null,
-            divStylingIdMain: 'container centered',
-           // divStylingTop: '',
-            divStylingIdCenterBox: 'centerBox skyblue has-shadow',
-            divStylingIdCenterToNav: 'navbar-end field is-grouped container is-padded',
-            divStylingIdErrorBar: 'is-hidden',
-            divStylingIdNavbar: 'warningyellow'
+            divIdMain: 'container centered',
+           // divTop: '',
+            divIdCenterBox: 'centerBox skyblue has-shadow',
+            divIdCenterToNav: 'navbar-end field is-grouped container is-padded',
+            divIdErrorBar: 'is-hidden',
+            divIdNavbar: 'warningyellow',
+            divIdInput: "input is-medium rounded-left"
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -47,7 +46,7 @@ class SearchBar extends Component {
                 self.checkPosition();
             }, function (error) {
                 self.setState({ buttonStyling: "button is-medium locateButton" })
-                self.setState({ divStylingIdErrorBar: "is-shown warningyellow"})
+                self.setState({ divIdErrorBar: "is-shown warningyellow"})
             })
         }
     }
@@ -59,30 +58,31 @@ class SearchBar extends Component {
 
     handleSubmit = (event) => {
         if(!this.state.searchString) {
-            this.setState({ divStylingIdErrorBar: "is-shown warningyellow" })
+            this.setState({divIdInput: "input is-medium rounded-left is-danger"})
             event.preventDefault();
         } else {
             this.props.locationName(this.state.searchString);
-            this.setState({ divStylingIdErrorBar: "is-hidden" });
+            this.setState({ divIdErrorBar: "is-hidden" });
             this.setState({ buttonStyling: "button is-medium locateButton"})
+            this.setState({ divIdInput: "input is-medium rounded-left"})
             this.checkPosition();
             event.preventDefault();
         }    
     }
 
     changeStyle = () => {
-        this.setState({ divStylingIdMain: "container centered fade-out" })
+        this.setState({ divIdMain: "container centered fade-out" })
         this.sleep(500)
-           .then(() => this.setState({ divStylingIdCenterBox: "hero skyblue fade-in padded-left-more", divStylingIdMain: "fade-in" })
+           .then(() => this.setState({ divIdCenterBox: "hero skyblue fade-in padded-left-more has-shadow", divIdMain: "fade-in" })
             )
     }
 
     closeError = () => {
-        this.setState({divStylingIdErrorBar: "is-hidden"})
+        this.setState({divIdErrorBar: "is-hidden"})
     }
 
     checkPosition = () => {
-        if(this.state.divStylingIdMain === "fade-in") { 
+        if(this.state.divIdMain === "fade-in") { 
         } else {
             this.changeStyle()
         }
@@ -93,7 +93,7 @@ class SearchBar extends Component {
         <div>
 
         {/* Top-page error bar if user disables location */}
-            <form className={this.state.divStylingIdErrorBar}>
+            <form className={this.state.divIdErrorBar}>
 
             {/*This makes the items within the error message to be grouped together*/}
                     <div className='field is-grouped container is-padded'>
@@ -110,13 +110,13 @@ class SearchBar extends Component {
         {/* Error bar ends here */}
         
         {/* Full-page div to (initially) center the searchbox on the page */}
-        <div className={this.state.divStylingIdMain} id="Main">
+        <div className={this.state.divIdMain} id="Main">
 
         {/* Searchbox content: location, input, button */}
-          <div className={this.state.divStylingIdCenterBox} id="CenterBox">
+          <div className={this.state.divIdCenterBox} id="CenterBox">
 
         {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
-            <div className={this.state.divStylingIdCenterToNav}>
+            <div className={this.state.divIdCenterToNav}>
 
                 {/* Locate-button; outside of the form-field to keep input/submit from triggering it */}
                     <button className={this.state.buttonStyling}
@@ -126,7 +126,7 @@ class SearchBar extends Component {
                     <form className="field is-grouped padded-left" onSubmit={this.handleSubmit}>
                             {/* Input-field */}
                                 <input type="text"
-                                    className="input is-medium rounded-left"
+                                    className={this.state.divIdInput}
                                     placeholder="Where are you?"
                                     value={this.state.value}
                                     onChange={this.handleChange}>
