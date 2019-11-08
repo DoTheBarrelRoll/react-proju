@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome';
-import { faTimes, faExclamationTriangle, faSearchLocation } from '../node_modules/@fortawesome/free-solid-svg-icons';
+import { faTimes, faExclamationTriangle, faMapMarkerAlt, faChevronRight } from '../node_modules/@fortawesome/free-solid-svg-icons';
 
 class SearchBar extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loading: true, buttonStatus: <FontAwesomeIcon icon={faSearchLocation} />,
+            loading: true,
+            buttonStatus: <FontAwesomeIcon icon={faMapMarkerAlt} />,
+            searchIcon: <FontAwesomeIcon icon={faChevronRight} />,
             buttonClose: <FontAwesomeIcon icon={faTimes} />,
             notificationIcon: <FontAwesomeIcon icon={faExclamationTriangle} />,
             buttonStyling: 'button is-medium inactiveText locateButton',
             geoData: null,
             searchString: null,
             divIdMain: 'container centered',
-           // divTop: '',
             divIdCenterBox: 'centerBox skyblue has-shadow',
             divIdCenterToNav: 'navbar-end field is-grouped container is-padded',
             divIdErrorBar: 'is-hidden',
@@ -73,7 +74,7 @@ class SearchBar extends Component {
     changeStyle = () => {
         this.setState({ divIdMain: "container centered fade-out" })
         this.sleep(500)
-           .then(() => this.setState({ divIdCenterBox: "hero skyblue fade-in padded-left-more has-shadow", divIdMain: "fade-in" })
+           .then(() => this.setState({ divIdCenterBox: "hero skyblue fade-in has-shadow", divIdMain: "fade-in" })
             )
     }
 

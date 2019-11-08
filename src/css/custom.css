@@ -26,6 +26,12 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   font-size: 24px;
 }
 
+.text-is-huge {
+  font-size: 36px;
+}
+
+
+
 .skyblue {
   background-color: #84CFFF;
 }
@@ -63,8 +69,16 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   padding: 0.75rem;
 }
 
+.has-margin {
+  margin: 0.75rem;
+}
+
 .margin-left-is-auto{
   margin-left: auto;
+}
+
+.has-margin-top {
+  margin-top: 0.1em;
 }
 
 .padded-right {
@@ -107,8 +121,16 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   visibility: show;
 }
 
-.is-level {
-  display: flex;
+.text-is-1 {
+  line-height: 1;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.input {
+  min-width: 100px;
 }
 
 .centered {
