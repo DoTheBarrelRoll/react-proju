@@ -28,7 +28,7 @@ class WeatherIcon extends Component {
     
     render() { 
         return (
-            <p className="subtitle text-is-large">{this.state.icons[this.props.iconCode]}</p>
+            <p className="subtitle text-is-large has-margin-top">{this.state.icons[this.props.iconCode]}</p>
         );
     }
 }

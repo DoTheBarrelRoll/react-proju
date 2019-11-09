@@ -10,7 +10,8 @@ class Weather extends Component {
         super(props);
         this.state = {
             status: "Waiting for weather...", weather: null, countryname: null, error: null, degrees: null,
-            divIdWeatherMain: "is-padded"
+            divIdWeatherMain: "is-padded",
+            divIdAlternative: "is-hidden centered"
         };
     }
 
@@ -47,7 +48,7 @@ class Weather extends Component {
             .then(response => this.handleErrors(response))
             .then(result => result.json())
             .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country) }))
-            .catch(error => this.setState({ status: "Something went wrong, try a different location" }))
+            .catch(error => this.setState({ status: "Something went wrong, try a different location", divIdAlternative: "centered is-shown"}))
     }
 
     // If the props update, execute the correct API query
@@ -66,28 +67,25 @@ class Weather extends Component {
 
             return (
                 <div className={this.state.divIdWeatherMain}>
-                    <div>
-                        {this.state.weather.name}, {this.state.countryname}
-                        <div className="tile is-ancestor is-padded">
-                            <div className="tile is-vertical is-8">
-                                <div className="tile">
-                                    <div className="tile is-parent is-vertical">
-                                        <article className="tile is-child notification MilkWhite">
-                                            <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
-                                            <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
-                                            <div className="field is-grouped">
-                                                <WeatherIcon iconCode={this.state.weather.weather[0].main} />
-                                                <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
-                                                
-                                            </div>
-                                            
-                                        </article>
-                                    </div>
-                                    <div className="tile is-parent">
-                                        <article className="tile is-child notification is-info is-12">
+                    <div className="tile is-ancestor is-padded">
+                        <div className="tile is-horizontal is-12">
+                            <div className="tile">
+                                <div className="tile is-parent is-horizontal not-padded-right">
+                                    <article className="tile is-child notification MilkWhite rounded-left">
+                                        <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
+                                        <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
+                                        <div className="field is-grouped">
+                                            <WeatherIcon iconCode={this.state.weather.weather[0].main} />
+                                            <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
 
-                                        </article>
-                                    </div>
+                                        </div>
+
+                                    </article>
+                                </div>
+                                <div className="tile is-parent is-horizontal is-8 not-padded-left">
+                                    <article className="tile is-child notification is-info rounded-right">
+                                        <p>fdsafdasfdsgafdafdjhbdfjgfdsgfdsgfdghdfsgf gdsfg sdfg fdsg fdsg dfsg fdsgfdshgfsfadfgdggsgfdsgfdgfdsgfdsg</p>
+                                    </article>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +93,7 @@ class Weather extends Component {
                 </div>
             )
         } else {
-            return (<div className="centered">Damn :( We did not seem to find anything with that search word.</div>)
+            return (<div className={this.state.divIdAlternative}>Damn :( We did not seem to find anything with that search word.</div>)
         }
     }
 }

@@ -1,5 +1,6 @@
 /*
 colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU 
+alt: http://paletton.com/#uid=7581t0klskugcw5hBq3qkflvPa5
 */
 
 .activeText {
@@ -30,14 +31,12 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   font-size: 36px;
 }
 
-
-
 .skyblue {
   background-color: #84CFFF;
 }
 
 .milkwhite {
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.7);
   color: 0, 0, 0, 0.7;
 }
 
@@ -45,6 +44,7 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
   background-color: #FF867C;
   color: #FFFFFF;
 }
+
 
 .grassgreen {
   background-color: #7CFF93;
@@ -79,6 +79,14 @@ colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU
 
 .has-margin-top {
   margin-top: 0.1em;
+}
+
+.not-padded-left {
+  padding-left: 0px !important;
+}
+
+.not-padded-right {
+  padding-right: 0px !important;
 }
 
 .padded-right {
