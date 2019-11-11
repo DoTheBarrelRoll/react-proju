@@ -9,23 +9,30 @@ class Movie extends Component {
     }
 
     componentDidMount() {
-        /*fetch('https://api.themoviedb.org/3/movie/550?api_key=79d3c1eee6d11a1dad4fefb18da19ce8', {
+        fetch('https://api.themoviedb.org/3/movie/550?api_key=79d3c1eee6d11a1dad4fefb18da19ce8', {
             method: 'get'
         })
             .then(result => result.json())
             .then(movie => this.setState({ movie: movie, loading: false }))
-            */
+            
     }
 
 
 
     render() {
-        return (
-            <div>{this.state.loading ?
-                (<div>Loading movies</div>) :
-                (<div>{this.state.movie.original_title}</div>)}
-            </div>
+        if (this.state.movie) {
+            return(
+                <div>
+                    <p className="legend">{this.state.movie.original_title}</p>
+                    <img alt='Movie poster'src={'http://image.tmdb.org/t/p/w300/' + this.state.movie.poster_path}></img>
+                </div>
+            )
+        } else {
+            return (
+            <div>Loading movies...</div>
         )
+        }
+        
     }
 }
 

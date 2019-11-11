@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import './Countrycodes'
-import WeatherIcon from './WeatherIcon'
+import WeatherIcon from './WeatherIcon';
+import Movie from './Movie';
+import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome';
+import { faLongArrowAltUp } from '../node_modules/@fortawesome/free-solid-svg-icons';
+
 const Countrynames = require('./Countrycodes');
 
 class Weather extends Component {
@@ -10,8 +14,9 @@ class Weather extends Component {
         super(props);
         this.state = {
             status: "Waiting for weather...", weather: null, countryname: null, error: null, degrees: null,
-            divIdWeatherMain: "is-padded",
-            divIdAlternative: "is-hidden centered"
+            divIdWeatherMain: "is-padded-more",
+            divIdAlternative: "is-hidden centered",
+            windIcon: <FontAwesomeIcon icon={faLongArrowAltUp} />
         };
     }
 
@@ -35,7 +40,7 @@ class Weather extends Component {
             method: 'get'
         })
             .then(result => result.json())
-            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "is-padded has-shadow" }))
+            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "is-padded-more has-shadow" }))
     }
 
     // Fetch the weather by using the search string supplied by the user
@@ -67,27 +72,28 @@ class Weather extends Component {
 
             return (
                 <div className={this.state.divIdWeatherMain}>
-                    <div className="tile is-ancestor is-padded">
-                        <div className="tile is-horizontal is-12">
+                    <div className="tile is-ancestor">
+                        <div className="tile is-vertical is-12">
                             <div className="tile">
-                                <div className="tile is-parent is-horizontal not-padded-right">
-                                    <article className="tile is-child notification MilkWhite rounded-left">
+                                <div className="tile is-parent is-horizontal not-padded">
+                                    <article className="tile is-child notification MilkWhite not-rounded">
                                         <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
                                         <div className="field is-grouped">
                                             <WeatherIcon iconCode={this.state.weather.weather[0].main} />
                                             <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
-
+                                            <div > <FontAwesomeIcon style={{transform: [{rotate: '90'}]}} icon={faLongArrowAltUp} /> </div>
                                         </div>
 
                                     </article>
                                 </div>
-                                <div className="tile is-parent is-horizontal is-8 not-padded-left">
-                                    <article className="tile is-child notification is-info rounded-right">
-                                        <p>fdsafdasfdsgafdafdjhbdfjgfdsgfdsgfdghdfsgf gdsfg sdfg fdsg fdsg dfsg fdsgfdshgfsfadfgdggsgfdsgfdgfdsgfdsg</p>
-                                    </article>
+                              
                                 </div>
+                                <div className="tile is-parent is-horizontal is-12 not-padded">
+                                    <article className="tile is-child notification darkskyblue not-rounded">
+                                    </article>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

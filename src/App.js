@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Weather from './Weather';
-import Movie from './Movie';
 import SearchBar from './SearchBar';
 import './css/bulma-0.7.5/css/bulma.css';
 import './css/custom.css';
@@ -36,7 +35,6 @@ class App extends Component {
 
         <div className='skyblue container'>
          <Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
-         <Movie />
         </div>
       </div>
     )
