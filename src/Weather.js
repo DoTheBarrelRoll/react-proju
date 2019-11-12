@@ -15,8 +15,7 @@ class Weather extends Component {
         this.state = {
             status: "Waiting for weather...", weather: null, countryname: null, error: null, degrees: null,
             divIdWeatherMain: "is-padded-more",
-            divIdAlternative: "is-hidden centered",
-            windIcon: <FontAwesomeIcon icon={faLongArrowAltUp} />
+            divIdAlternative: "is-hidden centered"
         };
     }
 
@@ -65,10 +64,14 @@ class Weather extends Component {
         }
     }
 
+    
+
 
     render() {
-
         if (this.state.weather) {
+
+            let windDirection = this.state.weather.wind.deg;
+            let windRotate = "rotate(" + windDirection + "deg)";
 
             return (
                 <div className={this.state.divIdWeatherMain}>
@@ -82,7 +85,10 @@ class Weather extends Component {
                                         <div className="field is-grouped">
                                             <WeatherIcon iconCode={this.state.weather.weather[0].main} />
                                             <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
-                                            <div > <FontAwesomeIcon style={{transform: [{rotate: '90'}]}} icon={faLongArrowAltUp} /> </div>
+                                        </div>
+                                        <div className="field is-grouped padded-left" style={{marginTop: -25, marginLeft: -10}}>
+                                            <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-huge"/> 
+                                        </div>
                                         </div>
 
                                     </article>
@@ -91,6 +97,7 @@ class Weather extends Component {
                                 </div>
                                 <div className="tile is-parent is-horizontal is-12 not-padded">
                                     <article className="tile is-child notification darkskyblue not-rounded">
+                                        <Movie />
                                     </article>
                             </div>
                             
