@@ -12,13 +12,13 @@ class SearchBar extends Component {
             buttonStatus: <FontAwesomeIcon icon={faMapMarkerAlt} />,
             buttonClose: <FontAwesomeIcon icon={faTimes} />,
             notificationIcon: <FontAwesomeIcon icon={faExclamationTriangle} />,
-            buttonStyling: 'button is-medium locateButton ',
+            buttonStyling: 'button is-medium locateButton solidwhite',
             geoData: null,
             searchString: null,
-            divIdMain: 'container centered',
+            divIdMain: 'container centered column is-one-third',
             divIdCenterBox: 'centerBox solidwhite has-shadow',
             divIdInfoBox: ' centerBox solidwhite has-shadow',
-            divIdCenterToNav: 'navbar-end field is-grouped container is-padded',
+            divIdCenterToNav: 'field is-grouped container is-padded',
             divIdErrorBar: 'is-hidden',
             divIdNavbar: 'warningyellow',
             divIdInput: "input is-medium rounded-left"
@@ -72,7 +72,8 @@ class SearchBar extends Component {
     }
 
     changeStyle = () => {
-        this.setState({ divIdMain: "container centered fade-out", divIdInfoBox: "fade-out" })
+        this.setState({ divIdMain: "container centered column is-one-third fade-out",
+                        divIdInfoBox: "centerBox solidwhite has-shadow fade-out"})
         this.sleep(500)
             .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow", divIdMain: "fade-in"})
             )
@@ -134,8 +135,8 @@ class SearchBar extends Component {
                                         value={this.state.value}
                                         onChange={this.handleChange}>
                                     </input>
-                                    {/* Submit-button */}
-                                    <input className="button green is-medium rounded-right" id="main" type="submit" value="Search"
+                                    {/* Search-button */}
+                                    <input className="button solidwhite is-medium rounded-right" id="search" type="submit" value="Search"
                                         onClick={this.handleSubmit}></input>
                                 </form>
                             </div>
