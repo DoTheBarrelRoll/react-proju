@@ -75,7 +75,7 @@ class SearchBar extends Component {
         this.setState({ divIdMain: "container centered column is-one-third fade-out",
                         divIdInfoBox: "centerBox solidwhite has-shadow fade-out"})
         this.sleep(500)
-            .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow", divIdMain: "fade-in"})
+            .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdMain: "fade-in"})
             )
     }
 
