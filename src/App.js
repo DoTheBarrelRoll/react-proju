@@ -29,11 +29,11 @@ class App extends Component {
   render() {
     return (
 
-      <div className="">
+      <div className="cyan">
         
             <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
 
-        <div className='skyblue container'>
+        <div className='container'>
          <Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
         </div>
       </div>

@@ -12,12 +12,12 @@ class SearchBar extends Component {
             buttonStatus: <FontAwesomeIcon icon={faMapMarkerAlt} />,
             buttonClose: <FontAwesomeIcon icon={faTimes} />,
             notificationIcon: <FontAwesomeIcon icon={faExclamationTriangle} />,
-            buttonStyling: 'button is-medium inactiveText locateButton',
+            buttonStyling: 'button is-medium locateButton ',
             geoData: null,
             searchString: null,
             divIdMain: 'container centered',
-            divIdCenterBox: 'centerBox skyblue has-shadow',
-            divIdInfoBox: ' centerBox skyblue has-shadow',
+            divIdCenterBox: 'centerBox solidwhite has-shadow',
+            divIdInfoBox: ' centerBox solidwhite has-shadow',
             divIdCenterToNav: 'navbar-end field is-grouped container is-padded',
             divIdErrorBar: 'is-hidden',
             divIdNavbar: 'warningyellow',
@@ -74,7 +74,7 @@ class SearchBar extends Component {
     changeStyle = () => {
         this.setState({ divIdMain: "container centered fade-out", divIdInfoBox: "fade-out" })
         this.sleep(500)
-            .then(() => this.setState({ divIdCenterBox: "hero skyblue fade-in has-shadow", divIdMain: "fade-in"})
+            .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow", divIdMain: "fade-in"})
             )
     }
 
@@ -94,7 +94,7 @@ class SearchBar extends Component {
             <div>
 
                 {/* Top-page error bar if user disables location */}
-                <form className={this.state.divIdErrorBar}>
+                <form className={this.state.divIdErrorBar}> 
 
                     {/*This makes the items within the error message to be grouped together*/}
                     <div className='field is-grouped container is-padded'>
@@ -123,11 +123,10 @@ class SearchBar extends Component {
                             <div className={this.state.divIdCenterToNav}>
 
                                 {/* Locate-button; outside of the form-field to keep input/submit from triggering it */}
-                                <button className={this.state.buttonStyling}
-                                    onClick={this.handleClick}>{this.state.buttonStatus}</button>
+                                <button className={this.state.buttonStyling} onClick={this.handleClick}>{this.state.buttonStatus}</button>
 
                                 {/* Form-field; includes input-field and submit-button*/}
-                                <form className="field is-grouped padded-left" onSubmit={this.handleSubmit}>
+                                <form className="field is-grouped padded-left container" onSubmit={this.handleSubmit} style={{width: "50%"}}>
                                     {/* Input-field */}
                                     <input type="text"
                                         className={this.state.divIdInput}
@@ -136,7 +135,7 @@ class SearchBar extends Component {
                                         onChange={this.handleChange}>
                                     </input>
                                     {/* Submit-button */}
-                                    <input className="button is-dark is-medium rounded-right" id="main" type="submit" value="Search"
+                                    <input className="button green is-medium rounded-right" id="main" type="submit" value="Search"
                                         onClick={this.handleSubmit}></input>
                                 </form>
                             </div>

@@ -39,7 +39,7 @@ class Weather extends Component {
             method: 'get'
         })
             .then(result => result.json())
-            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "is-padded-more has-shadow" }))
+            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "is-padded-more" }))
     }
 
     // Fetch the weather by using the search string supplied by the user
@@ -78,8 +78,8 @@ class Weather extends Component {
                     <div className="tile is-ancestor">
                         <div className="tile is-vertical is-12">
                             <div className="tile">
-                                <div className="tile is-parent is-horizontal not-padded">
-                                    <article className="tile is-child notification MilkWhite not-rounded">
+                                <div className="tile is-parent is-horizontal">
+                                    <article className="tile is-child notification solidwhite has-shadow">
                                         <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
                                         <div className="field is-grouped">
@@ -95,8 +95,8 @@ class Weather extends Component {
                                 </div>
                               
                                 </div>
-                                <div className="tile is-parent is-horizontal is-12 not-padded">
-                                    <article className="tile is-child notification darkskyblue not-rounded">
+                                <div className="tile is-parent is-horizontal is-12">
+                                    <article className="tile is-child notification solidwhite has-shadow">
                                         <Movie />
                                     </article>
                             </div>
