@@ -14,7 +14,7 @@ class Weather extends Component {
         super(props);
         this.state = {
             status: "Waiting for weather...", weather: null, countryname: null, error: null, degrees: null,
-            divIdWeatherMain: "is-padded-more",
+            divIdWeatherMain: "",
             divIdAlternative: "is-hidden centered"
         };
     }
@@ -39,7 +39,7 @@ class Weather extends Component {
             method: 'get'
         })
             .then(result => result.json())
-            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "is-padded-more" }))
+            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "" }))
     }
 
     // Fetch the weather by using the search string supplied by the user
@@ -87,7 +87,9 @@ class Weather extends Component {
                                             <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
                                         </div>
                                         <div className="field is-grouped padded-left" style={{marginTop: -25, marginLeft: -10}}>
-                                            <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-huge"/> 
+                                            <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-large"/>
+                                            {console.log(this.state.weather)}
+                                            <p className="text-is-medium">Wind: {this.state.weather.wind.speed} to {this.state.weather.wind.deg}° </p>
                                         </div>
                                         </div>
 

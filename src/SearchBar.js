@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome';
 import { faTimes, faExclamationTriangle, faMapMarkerAlt } from '../node_modules/@fortawesome/free-solid-svg-icons';
+import { whileStatement } from '@babel/types';
 
 class SearchBar extends Component {
 
@@ -15,13 +16,13 @@ class SearchBar extends Component {
             buttonStyling: 'button is-medium locateButton solidwhite',
             geoData: null,
             searchString: null,
-            divIdMain: 'container centered column is-one-third',
+            divIdMain: 'container centered column is-half',
             divIdCenterBox: 'centerBox solidwhite has-shadow',
             divIdInfoBox: ' centerBox solidwhite has-shadow',
             divIdCenterToNav: 'field is-grouped container is-padded',
             divIdErrorBar: 'is-hidden',
             divIdNavbar: 'warningyellow',
-            divIdInput: "input is-medium rounded-left"
+            divIdInput: "input is-medium"
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -59,20 +60,20 @@ class SearchBar extends Component {
 
     handleSubmit = (event) => {
         if (!this.state.searchString) {
-            this.setState({ divIdInput: "input is-medium rounded-left is-danger" })
+            this.setState({ divIdInput: "input is-medium is-danger" })
             event.preventDefault();
         } else {
             this.props.locationName(this.state.searchString);
             this.setState({ divIdErrorBar: "is-hidden" });
             this.setState({ buttonStyling: "button is-medium locateButton" })
-            this.setState({ divIdInput: "input is-medium rounded-left" })
+            this.setState({ divIdInput: "input is-medium" })
             this.checkPosition();
             event.preventDefault();
         }
     }
 
     changeStyle = () => {
-        this.setState({ divIdMain: "container centered column is-one-third fade-out",
+        this.setState({ divIdMain: "container centered column is-half fade-out",
                         divIdInfoBox: "centerBox solidwhite has-shadow fade-out"})
         this.sleep(500)
             .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdMain: "fade-in"})
@@ -93,6 +94,8 @@ class SearchBar extends Component {
     render() {
         return (
             <div>
+                
+              
 
                 {/* Top-page error bar if user disables location */}
                 <form className={this.state.divIdErrorBar}> 
@@ -114,11 +117,15 @@ class SearchBar extends Component {
                 {/* Full-page div to (initially) center the searchbox on the page */}
                 <div className={this.state.divIdMain} id="Main">
 
-
                     <div>
                         {/* Searchbox content: location, input, button */}
-                        <div className={this.state.divIdCenterBox} id="CenterBox">
+                        <div className={this.state.divIdCenterBox} id="CenterBox">  
 
+                        <div>
+                              
+                <i className="fas fa-cloud onTop text-is-large"></i>
+                <i className="fas fa-ticket-alt onBottom text-is-large"></i>
+                        </div>
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
@@ -127,7 +134,7 @@ class SearchBar extends Component {
                                 <button className={this.state.buttonStyling} onClick={this.handleClick}>{this.state.buttonStatus}</button>
 
                                 {/* Form-field; includes input-field and submit-button*/}
-                                <form className="field is-grouped padded-left container" onSubmit={this.handleSubmit} style={{width: "50%"}}>
+                                <form className="field is-grouped padded-left container" onSubmit={this.handleSubmit}>
                                     {/* Input-field */}
                                     <input type="text"
                                         className={this.state.divIdInput}
@@ -136,8 +143,8 @@ class SearchBar extends Component {
                                         onChange={this.handleChange}>
                                     </input>
                                     {/* Search-button */}
-                                    <input className="button solidwhite is-medium rounded-right" id="search" type="submit" value="Search"
-                                        onClick={this.handleSubmit}></input>
+                                    <input className="button searchButton is-medium has-margin-left" id="search" type="submit" value="Search"
+                                     onClick={this.handleSubmit}></input>
                                 </form>
                             </div>
                         </div>
