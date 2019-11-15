@@ -78,8 +78,8 @@ class Weather extends Component {
                     <div className="tile is-ancestor">
                         <div className="tile is-vertical is-12">
                             <div className="tile">
-                                <div className="tile is-parent is-horizontal">
-                                    <article className="tile is-child notification solidwhite has-shadow">
+                                <div className="tile is-parent is-horizontal not-padded">
+                                    <article className="tile is-child notification solidwhite has-shadow not-rounded">
                                         <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
                                         <div className="field is-grouped">
@@ -97,8 +97,8 @@ class Weather extends Component {
                                 </div>
                               
                                 </div>
-                                <div className="tile is-parent is-horizontal is-12">
-                                    <article className="tile is-child notification solidwhite has-shadow">
+                                <div className="tile is-parent not-padded is-horizontal is-12">
+                                    <article className="tile is-child notification solidwhite has-shadow not-rounded">
                                         <Movie />
                                     </article>
                             </div>
@@ -108,7 +108,7 @@ class Weather extends Component {
                 </div>
             )
         } else {
-            return (<div className={this.state.divIdAlternative}>Damn :( We did not seem to find anything with that search word.</div>)
+            return (<div className={this.state.divIdAlternative}>Well shucks. :( According to our sources that place does not exist.</div>)
         }
     }
 }

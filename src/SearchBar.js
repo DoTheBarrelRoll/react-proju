@@ -119,13 +119,7 @@ class SearchBar extends Component {
 
                     <div>
                         {/* Searchbox content: location, input, button */}
-                        <div className={this.state.divIdCenterBox} id="CenterBox">  
-
-                        <div>
-                              
-                <i className="fas fa-cloud onTop text-is-large"></i>
-                <i className="fas fa-ticket-alt onBottom text-is-large"></i>
-                        </div>
+                        <div className={this.state.divIdCenterBox} id="CenterBox">
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
@@ -143,8 +137,10 @@ class SearchBar extends Component {
                                         onChange={this.handleChange}>
                                     </input>
                                     {/* Search-button */}
-                                    <input className="button searchButton is-medium has-margin-left" id="search" type="submit" value="Search"
-                                     onClick={this.handleSubmit}></input>
+                                    <button className="button searchButton is-medium has-margin-left" id="search" type="submit" value="Search"
+                                     onClick={this.handleSubmit}>
+                                         <i class="fas fa-play"></i>
+                                     </button>
                                 </form>
                             </div>
                         </div>

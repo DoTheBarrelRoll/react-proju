@@ -198,10 +198,19 @@ body {
   width: 100%;
   border: 1px solid gray;
   border-radius: 0 0 0 0;
+  transition: 250ms;
+  box-shadow: 0 0 0 0;
+}
+
+.input:hover {
+  transition: 250ms;
+  box-shadow: 2px 2px 0 1px gray;
+  margin-left: -2px;
+  margin-top: -2px;
 }
 
 .input::placeholder {
-  color: rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .centered {
@@ -224,7 +233,7 @@ body {
 }
 
 .locateButton {
-  border: 1px solid currentcolor;
+  border: 1px solid red;
   cursor: pointer;
   justify-content: center;
   padding-bottom: calc(0.375em - 1px);
@@ -235,6 +244,7 @@ body {
   white-space: nowrap;
   color: #F44336;
   background-color: white;
+  transition: 250ms;
 }
 
 .locatedButton {
@@ -260,8 +270,14 @@ body {
 
 .locateButton:hover,
 .locateButton.is-hovered {
+  transition: 250ms;
   background-color: #FF867C;
+  border: 1px solid #FF867C;
+  box-shadow: 2px 2px 0 1px #B71C1C;
   color: #FFF;
+  margin-left: -2px;
+  margin-top: -2px;
+  margin-right: 2px;
 }
 
 .locatedButton:focus,
@@ -306,8 +322,19 @@ body {
   padding-top: calc(0.375em - 1px);
   text-align: center;
   white-space: nowrap;
-  background-color: #4CAF50 !important;
-  color: #FFF !important;
+  background-color: #4CAF50;
+  color: #FFF;
+  transition: 250ms;
+}
+
+.searchButton:hover {
+  transition: 250ms;
+  background-color: #00BCD4;
+  color: white;
+  box-shadow: 2px 2px 0 1px #00838F;
+  padding-left: 16px;
+  margin-right: 2px;
+  margin-top: -2px;
 }
 
 .fade-in {
