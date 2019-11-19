@@ -18,6 +18,11 @@ body {
   color: #FFF;
 }
 
+.purple {
+  background-color: #9C27B0;
+  color: #FFF;
+}
+
 .solidwhite {
   background-color: #FFF;
   color: inherit;
@@ -106,7 +111,7 @@ body {
 }
 
 .is-padded {
-  padding: 0.75rem;
+  padding: 0.5rem;
 }
 
 .is-padded-more {
@@ -194,7 +199,7 @@ body {
 }
 
 .input {
-  min-width: 100px;
+  min-width: 85px;
   width: 100%;
   border: 1px solid gray;
   border-radius: 0 0 0 0;
@@ -204,8 +209,7 @@ body {
 
 .input:hover {
   transition: 250ms;
-  box-shadow: 2px 2px 0 1px gray;
-  margin-left: -2px;
+  box-shadow: 0px 2px 0 1px gray;
   margin-top: -2px;
 }
 
@@ -248,7 +252,7 @@ body {
 }
 
 .locatedButton {
-  border: 0px;
+  border: 1px solid#B71C1C;
   cursor: pointer;
   justify-content: center;
   padding-bottom: calc(0.375em - 1px);
@@ -259,7 +263,7 @@ body {
   white-space: nowrap;
   color: white;
   background-color: #F44336;
-  box-shadow: inset 1px 1px 0px 1px#B71C1C;
+  box-shadow: inset 0px 1px 0px 1px#B71C1C;
 }
 
 .locatedButton:hover,
@@ -273,11 +277,9 @@ body {
   transition: 250ms;
   background-color: #FF867C;
   border: 1px solid #FF867C;
-  box-shadow: 2px 2px 0 1px #B71C1C;
+  box-shadow: 0px 2px 0 1px #B71C1C;
   color: #FFF;
-  margin-left: -2px;
   margin-top: -2px;
-  margin-right: 2px;
 }
 
 .locatedButton:focus,
@@ -313,7 +315,6 @@ body {
 }
 
 .searchButton {
-  /*border: 1px solid currentcolor;*/
   cursor: pointer;
   justify-content: center;
   padding-bottom: calc(0.375em - 1px);
@@ -322,19 +323,37 @@ body {
   padding-top: calc(0.375em - 1px);
   text-align: center;
   white-space: nowrap;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #FFF;
   transition: 250ms;
+  min-width: 50px;
+  border: 1px solid transparent;
 }
 
 .searchButton:hover {
+  border: 1px solid #4CAF50;
   transition: 250ms;
-  background-color: #00BCD4;
-  color: white;
-  box-shadow: 2px 2px 0 1px #00838F;
-  padding-left: 16px;
-  margin-right: 2px;
+  background-color: white;
+  color: #4CAF50;
+  min-width: 50px;
+  box-shadow: 0px 2px 0 1px #4CAF50;
   margin-top: -2px;
+}
+
+.searchButton:focus {
+  border: 1px solid #1B5E20;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: calc(0.375em - 1px);
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  background-color: #4CAF50;
+  box-shadow: 0px 1px 0px 1px #1B5E20;
+  transition: 250ms;
 }
 
 .fade-in {

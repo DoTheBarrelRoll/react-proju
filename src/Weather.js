@@ -75,7 +75,7 @@ class Weather extends Component {
 
             return (
                 <div className={this.state.divIdWeatherMain}>
-                    <div className="tile is-ancestor">
+                    <div className="tile">
                         <div className="tile is-vertical is-12">
                             <div className="tile">
                                 <div className="tile is-parent is-horizontal not-padded">

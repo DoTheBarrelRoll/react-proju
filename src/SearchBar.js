@@ -118,8 +118,11 @@ class SearchBar extends Component {
                 <div className={this.state.divIdMain} id="Main">
 
                     <div>
+
                         {/* Searchbox content: location, input, button */}
                         <div className={this.state.divIdCenterBox} id="CenterBox">
+
+                            
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
