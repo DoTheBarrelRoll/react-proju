@@ -52,7 +52,7 @@ class Weather extends Component {
             .then(response => this.handleErrors(response))
             .then(result => result.json())
             .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country) }))
-            .catch(error => this.setState({ status: "Something went wrong, try a different location", divIdAlternative: "centered is-shown"}))
+            .catch(error => this.setState({ status: "Something went wrong, try a different location", divIdAlternative: "centered is-shown" }))
     }
 
     // If the props update, execute the correct API query
@@ -64,7 +64,7 @@ class Weather extends Component {
         }
     }
 
-    
+
 
 
     render() {
@@ -86,23 +86,23 @@ class Weather extends Component {
                                             <WeatherIcon iconCode={this.state.weather.weather[0].main} />
                                             <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
                                         </div>
-                                        <div className="field is-grouped padded-left" style={{marginTop: -25, marginLeft: -10}}>
-                                            <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-large"/>
-                                            {console.log(this.state.weather)}
-                                            <p className="text-is-medium">Wind: {this.state.weather.wind.speed} to {this.state.weather.wind.deg}° </p>
-                                        </div>
+                                        <div className="field is-grouped padded-left" style={{ marginTop: -25, marginLeft: -10 }}>
+                                            <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-large" />
+                                                {console.log(this.state.weather)}
+                                                <p className="text-is-medium">Wind: {this.state.weather.wind.speed} to {this.state.weather.wind.deg}° </p>
+                                            </div>
                                         </div>
 
                                     </article>
                                 </div>
-                              
-                                </div>
-                                <div className="tile is-parent not-padded is-horizontal is-12">
-                                    <article className="tile is-child notification solidwhite has-shadow not-rounded">
-                                        <Movie />
-                                    </article>
+
                             </div>
-                            
+                            <div className="tile is-parent not-padded is-horizontal is-12">
+                                <div className="tile is-child notification solidwhite has-shadow not-rounded movie-container">
+                                    <Movie />
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
