@@ -17,9 +17,9 @@ class SearchBar extends Component {
             geoData: null,
             searchString: null,
             divIdMain: 'container centered column is-half',
-            divIdHeader: 'has-margin-left gradientTitle',
+            divIdHeader: 'is-padded gradientTitle',
             divIdCenterBox: 'centerBox solidwhite has-shadow',
-            divIdInfoBox: ' centerBox solidwhite has-shadow',
+            divIdInfoBox: 'tile solidwhite has-shadow',
             divIdCenterToNav: 'field is-grouped container is-padded',
             divIdErrorBar: 'is-hidden',
             divIdNavbar: 'warningyellow',
@@ -74,11 +74,13 @@ class SearchBar extends Component {
     }
 
     changeStyle = () => {
-        this.setState({ divIdMain: "container centered column is-half fade-out",
-                        divIdInfoBox: "centerBox solidwhite has-shadow fade-out",
-                        divIdHeader: "fade-out is-hidden"})
+        this.setState({
+            divIdMain: "container centered column is-half fade-out",
+            divIdInfoBox: "solidwhite fade-out",
+            divIdHeader: "fade-out is-hidden"
+        })
         this.sleep(500)
-            .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdMain: "fade-in"})
+            .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdMain: "fade-in" })
             )
     }
 
@@ -96,15 +98,15 @@ class SearchBar extends Component {
     render() {
         return (
             <div>
-                
-              
+
+
 
                 {/* Top-page error bar if user disables location */}
-                <form className={this.state.divIdErrorBar}> 
+                <form className={this.state.divIdErrorBar}>
 
                     {/*This makes the items within the error message to be grouped together*/}
                     <div className='field is-grouped container is-padded'>
-                    
+
                         <div className="navbar-item is-big-icon">{this.state.notificationIcon}</div>
 
                         <h1 className="navbar-item overrideh1">You have disabled location services.</h1>
@@ -120,11 +122,11 @@ class SearchBar extends Component {
                 <div className={this.state.divIdMain} id="Main">
 
                     <div>
-                        
+
                         {/* Searchbox content: location, input, button */}
                         <div className={this.state.divIdCenterBox} id="CenterBox">
 
-                        <h1 className={this.state.divIdHeader}> sääkino. </h1>    
+                            <h1 className={this.state.divIdHeader}> sääkino.</h1>
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
@@ -143,17 +145,40 @@ class SearchBar extends Component {
                                     </input>
                                     {/* Search-button */}
                                     <button className="button searchButton is-medium has-margin-left" id="search" type="submit" value="Search"
-                                     onClick={this.handleSubmit}>
-                                         <i className="fas fa-play"></i>
-                                     </button>
+                                        onClick={this.handleSubmit}>
+                                        <i className="fas fa-play"></i>
+                                    </button>
                                 </form>
-                            </div>
+                            </div>                            
                         </div>
 
-                        {/* This is the info box below the input screen */}
-                        <div className={this.state.divIdInfoBox} id="InfoBox">
-                            <p className="subtitle"> This is <strong> Sääkino™</strong>. <br></br> It recommends movies based on the weather observed at the given location. Type in your city to see what you should be watching now!</p>
+                        {/* This is the info box below the input div */}
+                        <div className="is-padded">
                         </div>
+                        <div className={this.state.divIdInfoBox} id="InfoBox"> 
+                                <nav class="level tile is-12 centerBox">
+                                    <div class="level-item has-text-centered tile is-2 is-padded">
+                                        <div>
+                                            <i className="fa fa-cloud fa-2x"></i>
+                                            <p class="has-margin">This is Sääkino™. It recommends movies based on the weather observed at the given location. Type in your city to see what you should be watching now!</p>
+                                        </div>
+                                    </div>
+                                    <div class="level-item has-text-centered">
+                                        <div>
+                                            <p class="heading">Followers</p>
+                                            <p class="title">666B</p>
+                                        </div>
+                                    </div>
+                                    <div class="level-item has-text-centered">
+                                        <div>
+                                            <p class="heading">Likes</p>
+                                            <p class="title">420</p>
+                                        </div>
+                                    </div>
+                                </nav>
+
+                            </div>
+
                     </div>
                 </div>
             </div>

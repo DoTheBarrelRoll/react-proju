@@ -14,7 +14,7 @@ class Weather extends Component {
         super(props);
         this.state = {
             status: "Waiting for weather...", weather: null, countryname: null, error: null, degrees: null,
-            divIdWeatherMain: "",
+            divIdWeatherMain: "has-margin-top",
             divIdAlternative: "is-hidden centered"
         };
     }

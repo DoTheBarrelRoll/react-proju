@@ -1,16 +1,21 @@
 /*
 colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU 
 alt: http://paletton.com/#uid=7581t0klskugcw5hBq3qkflvPa5
+also alt: http://paletton.com/#uid=53l0M0kaLKt2iZk6kTpfezQjAsv
 */
 
 body {
-  background-color: #00BCD4;
+  background-color: #89C4CC;
   height: 100vh;
 }
 
 .cyan {
   background-color: #00BCD4;
   color: #FFF;
+}
+
+.is-half {
+  max-width: 718px;
 }
 
 .green {
@@ -168,6 +173,12 @@ body {
 
 .padded-left-most {
   padding-left: 64px;
+}
+
+.padded-top {
+  padding-top: 32px;
+  border-top: 1px solid grey;
+  margin-top: 32px;
 }
 
 .padded-bottom {
@@ -394,24 +405,28 @@ body {
 }
 
 .gradientTitle {
-  font-size: 72px;
+  font-size: 4em;
   font-weight: 800;
   font-family: 'Helvetica Neue', sans-serif;
   transition: 2s;
-  background: white;
-  width: 4em;
-  visibility: hidden;
-  color:  (0,0,0,0.7);
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 64px;  
 }
 
 .gradientTitle:hover {
+  color: #776DBA;
+  transition: 2s;
+  left: 20px;  
+}
+
+/*.gradientTitle:hover {
   visibility: hidden;
   color: black;
   background: rgba(212,45,253,1);
   width: 5em;
   background-position-y: 20px;
   transition: 2s;
-}
+}*/
 
 .movie-container {
   min-width:0;
