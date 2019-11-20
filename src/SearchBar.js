@@ -19,7 +19,7 @@ class SearchBar extends Component {
             divIdMain: 'container centered column is-half',
             divIdHeader: 'is-padded gradientTitle',
             divIdCenterBox: 'centerBox solidwhite has-shadow',
-            divIdInfoBox: 'tile solidwhite has-shadow',
+            divIdInfoBox: 'tile',
             divIdCenterToNav: 'field is-grouped container is-padded',
             divIdErrorBar: 'is-hidden',
             divIdNavbar: 'warningyellow',
@@ -153,29 +153,30 @@ class SearchBar extends Component {
                         </div>
 
                         {/* This is the info box below the input div */}
-                        <div className="is-padded">
-                        </div>
                         <div className={this.state.divIdInfoBox} id="InfoBox"> 
-                                <nav class="level tile is-12 centerBox">
-                                    <div class="level-item has-text-centered tile is-2 is-padded">
+                                <div className="level tile is-12 has-shadow">
+
+                                    <div className="level-item cyan padded-top has-text-centered tile is-5 is-padded">
                                         <div>
                                             <i className="fa fa-cloud fa-2x"></i>
-                                            <p class="has-margin">This is Sääkino™. It recommends movies based on the weather observed at the given location. Type in your city to see what you should be watching now!</p>
+                                            <p className="has-margin">This is <strong>Sääkino™</strong>. It recommends movies based on the weather observed at the given location. Type in your city above to see what you should be watching now!</p>
                                         </div>
                                     </div>
-                                    <div class="level-item has-text-centered">
+
+                                    <div className="level-item tile purple has-text-centered is-padded is-4 padded-top">
                                         <div>
-                                            <p class="heading">Followers</p>
-                                            <p class="title">666B</p>
+                                            <i className="fa fa-clock fa-2x"></i>
+                                            <p className="has-margin">Sääkino uses and shows the most recent weather conditions. </p>
                                         </div>
                                     </div>
-                                    <div class="level-item has-text-centered">
+
+                                    <div className="level-item has-text-centered red tile is-padded is-3 padded-top">
                                         <div>
-                                            <p class="heading">Likes</p>
-                                            <p class="title">420</p>
+                                            <i className="fa fa-film fa-2x"></i>
+                                            <p className="has-margin">Enjoy movies that are relevant to you right now!</p>
                                         </div>
                                     </div>
-                                </nav>
+                                </div>
 
                             </div>
 

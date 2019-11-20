@@ -10,21 +10,21 @@ body {
 }
 
 .cyan {
-  background-color: #00BCD4;
+  background-color: #38818B;
   color: #FFF;
 }
 
 .is-half {
-  max-width: 718px;
+  max-width: 860px;
 }
 
 .green {
-  background-color: #4CAF50;
+  background-color: #89CB4F;
   color: #FFF;
 }
 
 .purple {
-  background-color: #9C27B0;
+  background-color: #544A9E;
   color: #FFF;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .red {
-  background-color: #F44336;
+  background-color: #CF5070;
   color: #FFF;
 }
 
@@ -139,6 +139,10 @@ body {
   margin-left: 16px;
 }
 
+.has-margin-right {
+  margin-right: 16px;
+}
+
 .has-margin-top {
   margin-top: 0.1em;
 }
@@ -176,9 +180,7 @@ body {
 }
 
 .padded-top {
-  padding-top: 32px;
-  border-top: 1px solid grey;
-  margin-top: 32px;
+  padding-top: 24px;
 }
 
 .padded-bottom {
@@ -238,6 +240,7 @@ body {
 .centerBox {
   padding: 32px;
   padding-top: 32px;
+  margin-bottom: 16px;
 }
 
 .button {
@@ -410,7 +413,7 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
   transition: 2s;
   color: rgba(0, 0, 0, 0.7);
-  line-height: 64px;  
+  line-height: 64px;
 }
 
 .gradientTitle:hover {
