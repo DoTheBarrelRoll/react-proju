@@ -17,6 +17,7 @@ class SearchBar extends Component {
             geoData: null,
             searchString: null,
             divIdMain: 'container centered column is-half',
+            divIdHeader: 'has-margin-left gradientTitle',
             divIdCenterBox: 'centerBox solidwhite has-shadow',
             divIdInfoBox: ' centerBox solidwhite has-shadow',
             divIdCenterToNav: 'field is-grouped container is-padded',
@@ -74,7 +75,8 @@ class SearchBar extends Component {
 
     changeStyle = () => {
         this.setState({ divIdMain: "container centered column is-half fade-out",
-                        divIdInfoBox: "centerBox solidwhite has-shadow fade-out"})
+                        divIdInfoBox: "centerBox solidwhite has-shadow fade-out",
+                        divIdHeader: "fade-out is-hidden"})
         this.sleep(500)
             .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdMain: "fade-in"})
             )
@@ -118,11 +120,11 @@ class SearchBar extends Component {
                 <div className={this.state.divIdMain} id="Main">
 
                     <div>
-
+                        
                         {/* Searchbox content: location, input, button */}
                         <div className={this.state.divIdCenterBox} id="CenterBox">
 
-                            
+                        <h1 className={this.state.divIdHeader}> sääkino. </h1>    
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
@@ -142,7 +144,7 @@ class SearchBar extends Component {
                                     {/* Search-button */}
                                     <button className="button searchButton is-medium has-margin-left" id="search" type="submit" value="Search"
                                      onClick={this.handleSubmit}>
-                                         <i class="fas fa-play"></i>
+                                         <i className="fas fa-play"></i>
                                      </button>
                                 </form>
                             </div>

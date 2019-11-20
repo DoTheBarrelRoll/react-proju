@@ -393,6 +393,26 @@ body {
   margin-bottom: 0.3em;
 }
 
+.gradientTitle {
+  font-size: 72px;
+  font-weight: 800;
+  font-family: 'Helvetica Neue', sans-serif;
+  transition: 2s;
+  background: white;
+  width: 4em;
+  visibility: hidden;
+  color:  (0,0,0,0.7);
+}
+
+.gradientTitle:hover {
+  visibility: hidden;
+  color: black;
+  background: rgba(212,45,253,1);
+  width: 5em;
+  background-position-y: 20px;
+  transition: 2s;
+}
+
 .movie-container {
   min-width:0;
   max-height:0;
