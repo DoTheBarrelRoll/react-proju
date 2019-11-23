@@ -25,9 +25,13 @@ class Movie extends Component {
 
     render() {
         const settings = {
+            infinite: true,
+            autoplay: true,
+            speed: 4000,
+            autoplaySpeed: 3999,
+            cssEase: "linear",
             dots: true,
             infinite: true,
-            speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1
         };
@@ -37,7 +41,7 @@ class Movie extends Component {
                 <div className="movie-container">
                     <Slider {...settings}>
                         {
-                            this.state.movies.map((movie => <div className="movie-item"><h3>{movie.title}</h3><img src={"http://image.tmdb.org/t/p/w500/" + movie.poster_path}></img></div>))
+                            this.state.movies.map((movie => <div className="movie-item"><h2>{movie.title}</h2><img src={"http://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
                         }
                     </Slider>
                 </div>

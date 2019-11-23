@@ -40,6 +40,7 @@ class Weather extends Component {
         })
             .then(result => result.json())
             .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "" }))
+            .catch(error => this.setState({error: "We couldn't find you :("}))
     }
 
     // Fetch the weather by using the search string supplied by the user
@@ -104,7 +105,7 @@ class Weather extends Component {
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
                                         <div className="field is-grouped">
                                             <WeatherIcon iconCode={this.state.weather.weather[0].main} />
-                                            <strong><p className="padded-left text-is-large">{this.state.weather.main.temp + " °C"}</p></strong>
+                                            <strong><p className="padded-left text-is-large">{Math.round((this.state.weather.main.temp * 10)) / 10 + " °C"}</p></strong>
                                         </div>
                                         <div className="field is-grouped padded-left" style={{ marginTop: -25, marginLeft: -10 }}>
                                             <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-large" />
@@ -118,7 +119,7 @@ class Weather extends Component {
 
                             </div>
                             <div className="tile is-parent not-padded is-horizontal is-12">
-                                <div className="tile is-child notification solidwhite has-shadow not-rounded movie-container">
+                                <div className="tile is-child notification cyan has-shadow not-rounded movie-container">
                                     <Movie />
                                 </div>
                             </div>
