@@ -16,7 +16,7 @@ class SearchBar extends Component {
             buttonStyling: 'button is-medium locateButton solidwhite',
             geoData: null,
             searchString: null,
-            divIdMain: 'container centered column is-half',
+            divIdSearch: 'container centered column is-half',
             divIdHeader: 'is-padded gradientTitle',
             divIdCenterBox: 'centerBox solidwhite has-shadow',
             divIdInfoBox: 'tile',
@@ -75,12 +75,14 @@ class SearchBar extends Component {
 
     changeStyle = () => {
         this.setState({
-            divIdMain: "container centered column is-half fade-out",
+            divIdSearch: "container centered column is-half fade-out",
             divIdInfoBox: "solidwhite fade-out",
-            divIdHeader: "fade-out is-hidden"
+            divIdHeader: "is-padded gradientTitle fade-out"
         })
         this.sleep(500)
-            .then(() => this.setState({ divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdMain: "fade-in" })
+            .then(() => this.setState({ 
+                divIdHeader: "is-hidden",
+                divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdSearch: "fade-in" })
             )
     }
 
@@ -89,7 +91,7 @@ class SearchBar extends Component {
     }
 
     checkPosition = () => {
-        if (this.state.divIdMain === "fade-in") {
+        if (this.state.divIdSearch === "fade-in") {
         } else {
             this.changeStyle()
         }
@@ -119,14 +121,12 @@ class SearchBar extends Component {
                 {/* Error bar ends here */}
 
                 {/* Full-page div to (initially) center the searchbox on the page */}
-                <div className={this.state.divIdMain} id="Main">
-
+                <div className={this.state.divIdSearch} id="Main">
                     <div>
-
                         {/* Searchbox content: location, input, button */}
                         <div className={this.state.divIdCenterBox} id="CenterBox">
 
-                            <h1 className={this.state.divIdHeader}> sääkino.</h1>
+                            <h1 className={this.state.divIdHeader}> Sääkino<i className="fa fa-cloud" style={{marginLeft: -102, marginTop: 5, height: 20}}></i></h1>
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
@@ -154,26 +154,26 @@ class SearchBar extends Component {
 
                         {/* This is the info box below the input div */}
                         <div className={this.state.divIdInfoBox} id="InfoBox"> 
-                                <div className="level tile is-12 has-shadow">
+                                <div className="level tile is-12">
 
-                                    <div className="level-item cyan padded-top has-text-centered tile is-5 is-padded">
+                                    <div className="level-item cyan has-shadow padded-top has-text-centered tile is-6 is-padded">
                                         <div>
                                             <i className="fa fa-cloud fa-2x"></i>
-                                            <p className="has-margin">This is <strong>Sääkino™</strong>. It recommends movies based on the weather observed at the given location. Type in your city above to see what you should be watching now!</p>
+                                            <p className="has-margin infoText">This is <strong>Sääkino™</strong>. It recommends movies based on the weather observed at the given location. Type in your city above to see what you should be watching now!</p>
                                         </div>
                                     </div>
 
-                                    <div className="level-item tile purple has-text-centered is-padded is-4 padded-top">
+                                    <div className="level-item tile has-shadow purple has-text-centered is-padded is-3 padded-top">
                                         <div>
                                             <i className="fa fa-clock fa-2x"></i>
-                                            <p className="has-margin">Sääkino uses and shows the most recent weather conditions. </p>
+                                            <p className="has-margin infoText">Sääkino uses and shows the most recent weather conditions. </p>
                                         </div>
                                     </div>
 
-                                    <div className="level-item has-text-centered red tile is-padded is-3 padded-top">
+                                    <div className="level-item has-shadow has-text-centered red tile is-padded is-3 padded-top">
                                         <div>
                                             <i className="fa fa-film fa-2x"></i>
-                                            <p className="has-margin">Enjoy movies that are relevant to you right now!</p>
+                                            <p className="has-margin infoText">Enjoy movies that are relevant to you right now!</p>
                                         </div>
                                     </div>
                                 </div>

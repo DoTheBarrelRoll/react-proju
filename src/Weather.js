@@ -66,33 +66,17 @@ class Weather extends Component {
     }
 
 
-
     render() {
         if (this.state.weather) {
-
+            
             let windDirection = this.state.weather.wind.deg;
+            if (windDirection === "undefined") {
+                let windDirection = "Wind direction not available"
+            }
+            console.log(windDirection);
             let windRotate = "rotate(" + windDirection + "deg)";
            
-           /* if (this.state.weather.wind.deg > 338 || this.state.weather.wind.deg < 23) {
-                let windDir = "N"
-            } else if (this.state.weather.wind.deg > 23 && this.state.weather.wind.deg < 68) {
-                let windDir = "NE"
-            } else if (this.state.weather.wind.deg > 68 && this.state.weather.wind.deg < 113) {
-                let windDir = "E"
-            } else if (this.state.weather.wind.deg > 113 && this.state.weather.wind.deg < 158) {
-                let windDir = "SE"
-            } else if (this.state.weather.wind.deg > 158 && this.state.weather.wind.deg < 203) {
-                let windDir = "S"
-            } else if (this.state.weather.wind.deg > 203 && this.state.weather.wind.deg < 248) {
-                let windDir = "SW"
-            } else if (this.state.weather.wind.deg > 248 && this.state.weather.wind.deg < 293) {
-                let windDir = "W"
-            } else if (this.state.weather.wind.deg > 293 && this.state.weather.wind.deg < 338) {
-                let windDir = "NW"
-            } else { 
-                let windDir = "Wind direction not available"
-            } */
-    
+        
 
             return (
                 <div className={this.state.divIdWeatherMain}>
@@ -109,8 +93,7 @@ class Weather extends Component {
                                         </div>
                                         <div className="field is-grouped padded-left" style={{ marginTop: -25, marginLeft: -10 }}>
                                             <div><FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-large" />
-                                                {console.log(this.state.weather)}
-                                                <p className="text-is-medium">Wind: {this.state.weather.wind.speed} m/s ({this.state.weather.wind.deg}°) </p>
+                                                <p className="text-is-medium">Wind: {this.state.weather.wind.speed} m/s ({windDirection}°) </p>
                                             </div>
                                         </div>
 

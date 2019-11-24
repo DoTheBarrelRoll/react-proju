@@ -211,8 +211,13 @@ body {
   margin: 0;
 }
 
+.infoText {
+  font-size: 0.8em;
+  line-height: 1.75;
+}
+
 .input {
-  min-width: 85px;
+  min-width: 80px;
   width: 100%;
   border: 1px solid gray;
   border-radius: 0 0 0 0;
@@ -394,42 +399,22 @@ body {
   cursor: pointer;
 }
 
-.onTop {
-  color: black;
-  font-size: 6em;
-}
-
-.onBottom {
-  color: #00BCD4;
-  transform: rotate(45deg);
-  font-size: 3em;
-  margin-left: -1.9em;
-  margin-bottom: 0.3em;
-}
-
 .gradientTitle {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 800;
   font-family: 'Helvetica Neue', sans-serif;
   transition: 2s;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(76,76,76,1);
   line-height: 64px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .gradientTitle:hover {
   color: #776DBA;
   transition: 2s;
-  left: 20px;  
+  left: 20px;
 }
-
-/*.gradientTitle:hover {
-  visibility: hidden;
-  color: black;
-  background: rgba(212,45,253,1);
-  width: 5em;
-  background-position-y: 20px;
-  transition: 2s;
-}*/
 
 .movie-container {
   min-width:0;
