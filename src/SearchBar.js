@@ -82,6 +82,7 @@ class SearchBar extends Component {
         this.sleep(500)
             .then(() => this.setState({ 
                 divIdHeader: "is-hidden",
+                divIdInfoBox: "is-hidden",
                 divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdSearch: "fade-in" })
             )
     }
@@ -126,7 +127,7 @@ class SearchBar extends Component {
                         {/* Searchbox content: location, input, button */}
                         <div className={this.state.divIdCenterBox} id="CenterBox">
 
-                            <h1 className={this.state.divIdHeader}> Sääkino<i className="fa fa-cloud" style={{marginLeft: -102, marginTop: 5, height: 20}}></i></h1>
+                            <h1 className={this.state.divIdHeader}> Sääkino<i className="fa fa-cloud" style={{marginLeft: "-1.88em", marginTop: "0.07em", height: "0.4em"}}></i></h1>
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>

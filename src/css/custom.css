@@ -49,18 +49,6 @@ body {
   color: #FFF;
 }
 
-.activeText {
-  color: rgba(0, 0, 0, 223);
-}
-
-.inactiveText {
-  color: rgba(0, 0, 0, 97);
-}
-
-.superActiveText {
-  color: #FF867C;
-}
-
 .text-is-small {
   font-size: 12px;
 }
@@ -181,6 +169,10 @@ body {
 
 .padded-top {
   padding-top: 24px;
+}
+
+.padded-top-more {
+  padding-top: 48px;
 }
 
 .padded-bottom {
@@ -404,14 +396,18 @@ body {
   font-weight: 800;
   font-family: 'Helvetica Neue', sans-serif;
   transition: 2s;
-  color: rgba(76,76,76,1);
+  color: #CF5070;
+  background: rgb(#CF5070);
+  background: -webkit-linear-gradient(35deg, #CF5070 0%, #544A9E 35%, #38818B 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 64px;
   display: flex;
   justify-content: flex-start;
 }
 
 .gradientTitle:hover {
-  color: #776DBA;
+  color: #38818B;
   transition: 2s;
   left: 20px;
 }
