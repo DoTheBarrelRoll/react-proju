@@ -399,6 +399,18 @@ body {
   min-height: 1100px;
 }
 
+.riseSet {
+  transition: 200ms;
+  height:1em;
+  width: 100%;
+  border-radius: 0.25em;
+}
+
+.riseSet:hover {
+  transition: 200ms;
+  height: 2em;
+}
+
 .movie-item {
   text-align: center;
   font-size: 30px;

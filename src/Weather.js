@@ -88,8 +88,8 @@ class Weather extends Component {
 
     render() {
         if (this.state.weather) {
-            
-            let dateObj = new Date(this.state.weather.dt * 1000); 
+
+            let dateObj = new Date(this.state.weather.dt * 1000);
             let utcString = dateObj.toString();
             let time = utcString.slice(16, 21);
 
@@ -99,7 +99,12 @@ class Weather extends Component {
             }
             let windRotate = "rotate(" + windDirection + "deg)";
 
-            let currentDayStart = (Math.floor(this.state.weather.dt / 86400)) * 8640
+            let timeZ = this.state.weather.timezone / 1400;
+            let dayStart = (Math.floor(this.state.weather.dt / 86400)) * 86400;
+            let dayEnd = (Math.floor(this.state.weather.dt / 86400) * 86400 + 86399) ;
+            let dayStartPerc = Math.round(((this.state.weather.sys.sunrise + timeZ) - dayStart) / (dayEnd - dayStart) * 100);
+            let dayEndPerc = Math.round((dayEnd - (this.state.weather.sys.sunset + timeZ)) / (dayEnd - dayStart) * 100);
+
 
             return (
                 <div className={this.state.divIdWeatherMain}>
@@ -112,49 +117,70 @@ class Weather extends Component {
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
 
                                         <div className="field is-grouped">
-                                            <p className="title"><WeatherIcon iconCode={this.state.weather.weather[0].main}/> </p>
+                                            <p className="title"><WeatherIcon iconCode={this.state.weather.weather[0].main} /> </p>
                                             <strong><p className="padded-left title">{Math.round((this.state.weather.main.temp * 10)) / 10 + " °C"}</p></strong>
                                         </div>
                                     </div>
 
-                                    <div className="tile is-child notification solidwhite">
-                                        <table>
-                                            <tbody>
+                                    <div className="tile is-vertical is-child notification solidwhite">
+                                        <div>
+                                            <table>
+                                                <tbody>
 
-                                                <tr>
-                                                    <td className="padded-right">Temperature:</td>
-                                                    <td> {this.doTemps()} </td>
-                                                    <td className="padded-left"> <strong>{this.state.weather.main.temp}</strong> °C {"(" + Math.round((this.state.weather.main.temp * 1.8) + 32) + " °F)"}</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td className="padded-right">Temperature:</td>
+                                                        <td> {this.doTemps()} </td>
+                                                        <td className="padded-left"> <strong>{this.state.weather.main.temp}</strong> °C {"(" + Math.round((this.state.weather.main.temp * 1.8) + 32) + " °F)"}</td>
+                                                    </tr>
 
-                                                <tr>
-                                                    <td className="padded-right">Wind: </td>
-                                                    <td> <FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp}/> </td>
-                                                    <td className="padded-left"> <strong>{this.state.weather.wind.speed}</strong> m/s due <strong>{this.degToCompass()}</strong> ({windDirection}°) </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td className="padded-right">Wind: </td>
+                                                        <td> <FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} /> </td>
+                                                        <td className="padded-left"> <strong>{this.state.weather.wind.speed}</strong> m/s due <strong>{this.degToCompass()}</strong> ({windDirection}°) </td>
+                                                    </tr>
 
-                                                <tr>
-                                                    <td className="padded-right">Humidity:</td>
-                                                    <td> <i className="fas fa-tint"></i> </td>
-                                                    <td className="padded-left"> <strong>{this.state.weather.main.humidity}</strong> %</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td className="padded-right">Humidity:</td>
+                                                        <td> <i className="fas fa-tint"></i> </td>
+                                                        <td className="padded-left"> <strong>{this.state.weather.main.humidity}</strong> %</td>
+                                                    </tr>
 
-                                                <tr>
-                                                    <td className="padded-right">Sky:</td>
-                                                    <td> <WeatherIcon iconCode={this.state.weather.weather[0].main}/> </td>
-                                                    <td className="padded-left"> {this.state.weather.weather[0].description} (cloud coverage {this.state.weather.clouds.all}%)</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td className="padded-right">Sky:</td>
+                                                        <td> <WeatherIcon iconCode={this.state.weather.weather[0].main} /> </td>
+                                                        <td className="padded-left"> {this.state.weather.weather[0].description} (cloud coverage {this.state.weather.clouds.all}%)</td>
+                                                    </tr>
 
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div className="tile is-child padded-top-more" style={{ height: "2em", verticalAlign: "center" }}>
+                                            <div className="field is-grouped">
+                                                <i className="fas fa-moon" style={{ width: dayStartPerc + "%", borderRight: "1px solid black", height: "1em" }}></i>
+                                                <i className="fas fa-sun" style={{ width: dayEndPerc - dayStartPerc + "%", borderRight: "1px solid black", height: "1em" }}></i>
+                                                <i className="fas fa-moon" style={{width: (100 - dayEndPerc - dayStartPerc + "%")}}></i>
+                                                {console.log(100-dayEndPerc-dayStartPerc)}
+                                            </div>
+                                            <div className="riseSet" style={{
+                                                background: "linear-gradient(90deg, #860f44 "
+                                                    + (dayStartPerc - 2)
+                                                    + "%, #dda700 "
+                                                    + (dayStartPerc + 2)
+                                                    + "%, #dda700 "
+                                                    + (dayEndPerc - 2)
+                                                    + "%, #522222 "
+                                                    + (dayEndPerc + 2)
+                                                    + "%)"
+                                            }}></div>
+                                        </div>
                                     </div>
-
                                 </div>
 
                             </div>
+
                             <div className="tile is-parent not-padded is-horizontal is-12">
                                 <div className="tile is-child notification cyan has-shadow not-rounded movie-container">
-                                    <Movie weather={this.state.weather}/>
+                                    <Movie weather={this.state.weather} />
                                 </div>
                             </div>
 
