@@ -19,17 +19,17 @@ class Movie extends Component {
         let genres = genreList.getName(weather);
         let genresString = "";
         genres.forEach(genre => {
-            genresString += genre  + "|"
+            genresString += genre + "|"
         });
-        return(genresString)
+        return (genresString)
     }
 
     componentDidMount() {
         fetch('https://api.themoviedb.org/3/discover/movie?api_key='
-        + process.env.REACT_APP_TMDBKEY
-        + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
-        + this.getGenres(), {
-        method: 'get'
+            + process.env.REACT_APP_TMDBKEY
+            + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
+            + this.getGenres(), {
+            method: 'get'
         })
             .then(result => result.json())
             .then(movie => this.setState({ movies: movie.results }))
@@ -53,7 +53,7 @@ class Movie extends Component {
                 <div className="movie-container">
                     <Slider {...settings}>
                         {
-                            this.state.movies.map(((movie, i)=> <div className="movie-item" key={i}><h2>{movie.title}</h2><img alt="Movie poster" src={"http://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
+                            this.state.movies.map(((movie, i) => <div className="movie-item" key={i}><h2>{movie.title}</h2><img alt="Movie poster" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
                         }
                     </Slider>
                 </div>
