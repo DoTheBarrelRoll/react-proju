@@ -53,7 +53,7 @@ class Movie extends Component {
                 <div className="movie-container">
                     <Slider {...settings}>
                         {
-                            this.state.movies.map(((movie, i)=> <div className="movie-item" key={i}><h2>{movie.title}</h2><img alt="Movie poster" src={"http://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
+                            this.state.movies.map(((movie, i)=> <div className="movie-item" key={i}><h2>{movie.title}</h2><img alt="Movie poster" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
                         }
                     </Slider>
                 </div>
