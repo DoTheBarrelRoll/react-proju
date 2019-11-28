@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome';
 import { faTimes, faExclamationTriangle, faMapMarkerAlt } from '../node_modules/@fortawesome/free-solid-svg-icons';
-import { whileStatement } from '@babel/types';
+//import { whileStatement } from '@babel/types';
 
 class SearchBar extends Component {
 
@@ -21,7 +21,7 @@ class SearchBar extends Component {
             divIdCenterBox: 'centerBox solidwhite has-shadow',
             divIdInfoBox: 'tile',
             divIdCenterToNav: 'field is-grouped container is-padded',
-            divIdErrorBar: 'is-hidden',
+            divIdErrorBar: 'is-hidden text-is-medium',
             divIdNavbar: 'warningyellow',
             divIdInput: "input is-medium"
         };
@@ -80,10 +80,11 @@ class SearchBar extends Component {
             divIdHeader: "is-padded gradientTitle fade-out"
         })
         this.sleep(500)
-            .then(() => this.setState({ 
+            .then(() => this.setState({
                 divIdHeader: "is-hidden",
                 divIdInfoBox: "is-hidden",
-                divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdSearch: "fade-in" })
+                divIdCenterBox: "hero solidwhite fade-in has-shadow-small", divIdSearch: "fade-in"
+            })
             )
     }
 
@@ -102,18 +103,13 @@ class SearchBar extends Component {
         return (
             <div>
 
-
-
                 {/* Top-page error bar if user disables location */}
                 <form className={this.state.divIdErrorBar}>
 
                     {/*This makes the items within the error message to be grouped together*/}
                     <div className='field is-grouped container is-padded'>
-
                         <div className="navbar-item is-big-icon">{this.state.notificationIcon}</div>
-
-                        <h1 className="navbar-item overrideh1">You have disabled location services.</h1>
-
+                        <h1 className="navbar-item">You have disabled location services.</h1>
                         <div className='navbar-item navbar-end is-big-icon is-clickable' onClick={this.closeError}>
                             {this.state.buttonClose}
                         </div>
@@ -124,10 +120,11 @@ class SearchBar extends Component {
                 {/* Full-page div to (initially) center the searchbox on the page */}
                 <div className={this.state.divIdSearch} id="Main">
                     <div>
-                        {/* Searchbox content: location, input, button */}
+                        {/* Searchbox content: title, location, input, search */}
                         <div className={this.state.divIdCenterBox} id="CenterBox">
 
-                            <h1 className={this.state.divIdHeader}> Sääkino<i className="fa fa-cloud" style={{marginLeft: "-1.88em", marginTop: "0.07em", height: "0.4em"}}></i></h1>
+                            {/* Logo/title within the searchbox*/}
+                            <h1 className={this.state.divIdHeader}> Sääkino<i className="fa fa-cloud" style={{ marginLeft: "-1.88em", marginTop: "0.07em", height: "0.4em" }}></i></h1>
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
@@ -149,37 +146,38 @@ class SearchBar extends Component {
                                         onClick={this.handleSubmit}>
                                         <i className="fas fa-play"></i>
                                     </button>
+
                                 </form>
-                            </div>                            
+                            </div>
                         </div>
 
-                        {/* This is the info box below the input div */}
-                        <div className={this.state.divIdInfoBox} id="InfoBox"> 
-                                <div className="level tile is-12">
+                        {/* Info box below input div */}
+                        <div className={this.state.divIdInfoBox} id="InfoBox">
+                            <div className="level tile is-12">
 
-                                    <div className="level-item cyan has-shadow padded-top has-text-centered tile is-6 is-padded">
-                                        <div>
-                                            <i className="fa fa-cloud fa-2x"></i>
-                                            <p className="has-margin infoText">This is <strong>Sääkino™</strong>. It recommends movies based on the weather observed at the given location. Type in your city above to see what you should be watching now!</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="level-item tile has-shadow purple has-text-centered is-padded is-3 padded-top">
-                                        <div>
-                                            <i className="fa fa-clock fa-2x"></i>
-                                            <p className="has-margin infoText">Sääkino uses and shows the most recent weather conditions. </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="level-item has-shadow has-text-centered red tile is-padded is-3 padded-top">
-                                        <div>
-                                            <i className="fa fa-film fa-2x"></i>
-                                            <p className="has-margin infoText">Enjoy movies that are relevant to you right now!</p>
-                                        </div>
+                                <div className="level-item cyan has-shadow padded-top has-text-centered tile is-6 is-padded">
+                                    <div>
+                                        <i className="fa fa-cloud fa-2x"></i>
+                                        <p className="has-margin infoText">This is <strong>Sääkino™</strong>. It recommends movies based on the weather observed at the given location. Type in your city above to see what you should be watching now!</p>
                                     </div>
                                 </div>
 
+                                <div className="level-item tile has-shadow purple has-text-centered is-padded is-3 padded-top">
+                                    <div>
+                                        <i className="fa fa-clock fa-2x"></i>
+                                        <p className="has-margin infoText">Sääkino uses and shows the most recent weather conditions. </p>
+                                    </div>
+                                </div>
+
+                                <div className="level-item has-shadow has-text-centered red tile is-padded is-3 padded-top">
+                                    <div>
+                                        <i className="fa fa-film fa-2x"></i>
+                                        <p className="has-margin infoText">Enjoy movies that are relevant to you right now!</p>
+                                    </div>
+                                </div>
                             </div>
+
+                        </div>
 
                     </div>
                 </div>

@@ -3,6 +3,9 @@ import './App.css';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import './TmdbGenres.js';
+const genreList = require('./TmdbGenres.js');
+
 
 class Movie extends Component {
 
@@ -11,14 +14,25 @@ class Movie extends Component {
         this.state = { loading: true, movies: [], weather: null, error: null };
     }
 
+    getGenres() {
+        let weather = this.props.weather.weather[0].main;
+        let genres = genreList.getName(weather);
+        let genresString = "";
+        genres.forEach(genre => {
+            genresString += genre  + "|"
+        });
+        return(genresString)
+    }
+
     componentDidMount() {
-        fetch('https://api.themoviedb.org/3/discover/movie?api_key=79d3c1eee6d11a1dad4fefb18da19ce8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28', {
-            method: 'get'
+        fetch('https://api.themoviedb.org/3/discover/movie?api_key='
+        + process.env.REACT_APP_TMDBKEY
+        + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
+        + this.getGenres(), {
+        method: 'get'
         })
             .then(result => result.json())
             .then(movie => this.setState({ movies: movie.results }))
-
-
     }
 
 
@@ -27,11 +41,9 @@ class Movie extends Component {
         const settings = {
             infinite: true,
             autoplay: true,
-            speed: 4000,
-            autoplaySpeed: 3999,
-            cssEase: "linear",
+            speed: 700,
+            cssEase: "ease-in-out",
             dots: true,
-            infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1
         };
@@ -41,7 +53,7 @@ class Movie extends Component {
                 <div className="movie-container">
                     <Slider {...settings}>
                         {
-                            this.state.movies.map((movie => <div className="movie-item"><h2>{movie.title}</h2><img src={"http://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
+                            this.state.movies.map(((movie, i)=> <div className="movie-item" key={i}><h2>{movie.title}</h2><img alt="Movie poster" src={"http://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
                         }
                     </Slider>
                 </div>
@@ -52,10 +64,3 @@ class Movie extends Component {
 
 
 export default Movie;
-
-/*
-http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-Key: 4ab2152ab8763e7e54aae7d10515dc07
-
-TMDB key: 79d3c1eee6d11a1dad4fefb18da19ce8
-*/

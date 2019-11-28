@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Weather from './Weather';
 import SearchBar from './SearchBar';
+import Footer from './Footer';
 import './css/bulma-0.7.5/css/bulma.css';
 import './css/custom.css';
 
@@ -34,8 +35,9 @@ class App extends Component {
             <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
 
         <div className='container'>
-         <Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
+          <Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
         </div>
+          <Footer />
       </div>
     )
   }

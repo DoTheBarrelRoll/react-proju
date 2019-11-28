@@ -6,6 +6,7 @@ import Movie from './Movie';
 import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome';
 import { faLongArrowAltUp } from '../node_modules/@fortawesome/free-solid-svg-icons';
 
+
 const Countrynames = require('./Countrycodes');
 
 class Weather extends Component {
@@ -35,7 +36,8 @@ class Weather extends Component {
             + this.props.position.coords.latitude
             + '&lon='
             + this.props.position.coords.longitude
-            + '&units=metric&appid=4ab2152ab8763e7e54aae7d10515dc07', {
+            + '&units=metric&appid='
+            + process.env.REACT_APP_WEATHERKEY, {
             method: 'get'
         })
             .then(result => result.json())
@@ -65,37 +67,39 @@ class Weather extends Component {
         }
     }
 
+    // Assigns cardinal directions (N, NE, etc) for the wind direction (response)
     degToCompass() {
         var val = Math.floor((this.state.weather.wind.deg / 45) + 0.5);
         var compass = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
         return compass[(val % 8)];
     }
 
-    doTemp() {
-        if (this.state.weather.main.temp < -20) {
-            return (<i class="fas fa-thermometer-empty"></i>)
-        } else if (this.state.weather.main.temp < -10 && this.state.weather.main.temp > -20) {
-            return (<i className="fas fa-thermometer-quarter"></i>)
-        } else if (this.state.weather.main.temp < 10 && this.state.weather.main.temp > -10) {
-            return (<i className="fas fa-thermometer-half"></i>)
-        } else if (this.state.weather.main.temp < 20 && this.state.weather.main.temp > 10) {
-            return (<i className="fas fa-thermometer-three-quarters"></i>)
-        } else {
-            return (<i className="fas fa-thermometer-full"></i>)
+    // Assigns the corresponding icon for the temperature (response)
+    doTemps() {
+        var temps = Math.round((this.state.weather.main.temp + 25) / 15)
+        if (temps > 4) {
+            temps = 4;
+        } else if (temps < 0) {
+            temps = 0;
         }
+        var tempsIcon = ["empty", "quarter", "half", "three-quarters", "full"];
+        return <i className={"fas fa-thermometer-" + tempsIcon[Math.round(temps)]}></i>
     }
 
     render() {
         if (this.state.weather) {
+            
+            let dateObj = new Date(this.state.weather.dt * 1000); 
+            let utcString = dateObj.toString();
+            let time = utcString.slice(16, 21);
 
             let windDirection = this.state.weather.wind.deg;
             if (windDirection === "undefined") {
-                let windDirection = "Wind direction not available";
+                windDirection = "Wind direction not available";
             }
-
             let windRotate = "rotate(" + windDirection + "deg)";
 
-
+            let currentDayStart = (Math.floor(this.state.weather.dt / 86400)) * 8640
 
             return (
                 <div className={this.state.divIdWeatherMain}>
@@ -103,8 +107,8 @@ class Weather extends Component {
                         <div className="tile is-vertical is-12">
                             <div className="tile padded-top-more">
                                 <div className="tile is-parent is-horizontal is-padded solidwhite has-shadow not-rounded ">
-                                    <div className="tile is-child is-3 notification solidwhite">
-                                        <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
+                                    <div className="tile is-child is-4 notification solidwhite">
+                                        <p className="title">{this.state.weather.name + ", " + this.state.countryname + " (measured at " + time + ")"}</p>
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
 
                                         <div className="field is-grouped">
@@ -119,26 +123,24 @@ class Weather extends Component {
 
                                                 <tr>
                                                     <td className="padded-right">Temperature:</td>
-                                                    <td> {this.doTemp()} </td>
-                                                    <td className="padded-left"> {this.state.weather.main.temp} °C {"(" + Math.round((this.state.weather.main.temp * 1.8) + 32) + " °F)"}</td>
+                                                    <td> {this.doTemps()} </td>
+                                                    <td className="padded-left"> <strong>{this.state.weather.main.temp}</strong> °C {"(" + Math.round((this.state.weather.main.temp * 1.8) + 32) + " °F)"}</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td className="padded-right">Wind: </td>
-                                                    <td> <FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} className="text-is-large" /> </td>
+                                                    <td> <FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp}/> </td>
                                                     <td className="padded-left"> <strong>{this.state.weather.wind.speed}</strong> m/s due <strong>{this.degToCompass()}</strong> ({windDirection}°) </td>
                                                 </tr>
-
-                                                
 
                                                 <tr>
                                                     <td className="padded-right">Humidity:</td>
                                                     <td> <i className="fas fa-tint"></i> </td>
-                                                    <td className="padded-left"> {this.state.weather.main.humidity} %</td>
+                                                    <td className="padded-left"> <strong>{this.state.weather.main.humidity}</strong> %</td>
                                                 </tr>
-{console.log(this.state.weather)}
+
                                                 <tr>
-                                                    <td className="padded-right">Status:</td>
+                                                    <td className="padded-right">Sky:</td>
                                                     <td> <WeatherIcon iconCode={this.state.weather.weather[0].main}/> </td>
                                                     <td className="padded-left"> {this.state.weather.weather[0].description} (cloud coverage {this.state.weather.clouds.all}%)</td>
                                                 </tr>
@@ -152,7 +154,7 @@ class Weather extends Component {
                             </div>
                             <div className="tile is-parent not-padded is-horizontal is-12">
                                 <div className="tile is-child notification cyan has-shadow not-rounded movie-container">
-                                    <Movie />
+                                    <Movie weather={this.state.weather}/>
                                 </div>
                             </div>
 

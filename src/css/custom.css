@@ -1,7 +1,5 @@
 /*
-colors http://paletton.com/#uid=73v2c0kgq++1q++ae++lS+XrxZU 
-alt: http://paletton.com/#uid=7581t0klskugcw5hBq3qkflvPa5
-also alt: http://paletton.com/#uid=53l0M0kaLKt2iZk6kTpfezQjAsv
+colors: http://paletton.com/#uid=53l0M0kaLKt2iZk6kTpfezQjAsv
 */
 
 body {
@@ -65,30 +63,13 @@ body {
   font-size: 36px;
 }
 
-.skyblue {
-  background-color: #84CFFF;
-}
-
-.darkskyblue {
-  background-color: #30ACFC;
-  color: #fff;
-}
-
 .pigred {
   background-color: #FF867C;
   color: #FFFFFF;
 }
 
-.grassgreen {
-  background-color: #7CFF93;
-}
-
-.trumporange {
-  background-color: #FFC57C;
-}
-
 .warningyellow{
-  background-color: #fff200;
+  background-color: #FFFDCD;
 }
 
 .has-shadow {
@@ -428,5 +409,28 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 30%;
+}
+
+.footer {
+  overflow: hidden;
+  position: relative;
+}
+
+.card-one {
+  position: absolute;
+  left: -200px;
+  bottom: 45px;
+  height: 200px;
+  width: 400px;
+  background: linear-gradient(225deg, rgba(62, 49, 140, .5) 0%, rgba(118, 109, 183, 0.5) 100%);
+}
+
+.card-two {
+  position: absolute;
+  left: 200px;
+  top: 45px;
+  height: 300px;
+  width: 300px;
+  background: linear-gradient(45deg, rgba(227, 197, 88, 0.7) 0%, rgba(255, 244, 205, 0.7) 100%);
 }
