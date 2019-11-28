@@ -13,6 +13,10 @@ let list = {
             "name": "Documentary, Drama, History, Romance"
         },
         {
+            "Drizzle": [99, 18, 36, 10749],
+            "name": "Documentary, Drama, History, Romance"
+        },
+        {
             "Clouds": [14, 36, 9648],
             "name": "Fantasy, History, Mystery"
         },
@@ -44,8 +48,8 @@ let list = {
 }
 
 exports.getName = (code) => {
-
     for (let i = 0; i < list.genres.length; i++) {
+        console.log(i);
         if (list.genres[i].hasOwnProperty(code)) {
             return list.genres[i][code];
         }

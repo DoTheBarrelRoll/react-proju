@@ -19,7 +19,7 @@ class App extends Component {
 
   // Callback function to fetch search string from SearchBar component
   fetchSearchString = (name) => {
-    this.setState({ searchString: name})
+    this.setState({ searchString: name })
   }
 
   // Callback function to fetch location from weather API query to be then displayed on the page
@@ -31,13 +31,13 @@ class App extends Component {
     return (
 
       <div className="">
-        
-            <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
+
+        <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
 
         <div className='container'>
           <Weather position={this.state.position} searchString={this.state.searchString} getLocation={this.fetchLocation.bind(this)} />
         </div>
-          <Footer />
+        <Footer />
       </div>
     )
   }
