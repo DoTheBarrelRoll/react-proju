@@ -49,7 +49,6 @@ let list = {
 
 exports.getName = (code) => {
     for (let i = 0; i < list.genres.length; i++) {
-        console.log(i);
         if (list.genres[i].hasOwnProperty(code)) {
             return list.genres[i][code];
         }

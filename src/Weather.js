@@ -89,9 +89,14 @@ class Weather extends Component {
     render() {
         if (this.state.weather) {
 
+            let timeZ = this.state.weather.timezone;
+
             let dateObj = new Date(this.state.weather.dt * 1000);
             let utcString = dateObj.toString();
-            let time = utcString.slice(16, 21);
+            let userTime = utcString.slice(16, 21);
+            let userGmtDiff = utcString.slice(28, 33) / 100 * 3600;
+
+            let localTime = this.state.weather.dt + timeZ - userGmtDiff; 
 
             let windDirection = this.state.weather.wind.deg;
             if (windDirection === "undefined") {
@@ -99,12 +104,14 @@ class Weather extends Component {
             }
             let windRotate = "rotate(" + windDirection + "deg)";
 
-            let timeZ = this.state.weather.timezone / 1400;
-            let dayStart = (Math.floor(this.state.weather.dt / 86400)) * 86400;
-            let dayEnd = (Math.floor(this.state.weather.dt / 86400) * 86400 + 86399) ;
-            let dayStartPerc = Math.round(((this.state.weather.sys.sunrise + timeZ) - dayStart) / (dayEnd - dayStart) * 100);
-            let dayEndPerc = Math.round((dayEnd - (this.state.weather.sys.sunset + timeZ)) / (dayEnd - dayStart) * 100);
+            
+            let dayStart = (Math.floor((this.state.weather.dt + timeZ) / 86400)) * 86400 + (this.state.weather.dt - localTime);
+            let dayEnd = (Math.floor((this.state.weather.dt + timeZ) / 86400) * 86400 + 86399) +  (this.state.weather.dt - localTime) ;
+            let dayStartPerc = Math.round((this.state.weather.sys.sunrise - dayStart) / (dayEnd - dayStart) * 100);
+            let dayEndPerc = Math.round((this.state.weather.sys.sunset - dayStart) / (dayEnd - dayStart) * 100);
 
+            console.log(dayStart);
+            console.log(dayEnd);
 
             return (
                 <div className={this.state.divIdWeatherMain}>
@@ -113,7 +120,7 @@ class Weather extends Component {
                             <div className="tile padded-top-more">
                                 <div className="tile is-parent is-horizontal is-padded solidwhite has-shadow not-rounded ">
                                     <div className="tile is-child is-4 notification solidwhite">
-                                        <p className="title">{this.state.weather.name + ", " + this.state.countryname + " (measured at " + time + ")"}</p>
+                                        <p className="title">{this.state.weather.name + ", " + this.state.countryname + " (measured at " + userTime + ")"}</p>
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
 
                                         <div className="field is-grouped">
@@ -155,11 +162,11 @@ class Weather extends Component {
                                             </table>
                                         </div>
                                         <div className="tile is-child padded-top-more" style={{ height: "2em", verticalAlign: "center" }}>
-                                            <div className="field is-grouped">
-                                                <i className="fas fa-moon" style={{ width: dayStartPerc + "%", borderRight: "1px solid black", height: "1em" }}></i>
-                                                <i className="fas fa-sun" style={{ width: dayEndPerc - dayStartPerc + "%", borderRight: "1px solid black", height: "1em" }}></i>
-                                                <i className="fas fa-moon" style={{width: (100 - dayEndPerc - dayStartPerc + "%")}}></i>
-                                                {console.log(100-dayEndPerc-dayStartPerc)}
+                                            <div className="field is-grouped" style={{overflow: "hidden"}}>
+                                                <i className="fas fa-moon" style={{ width: (dayStartPerc + "%"), borderRight: "1px solid black", height: "1em", overflow: "hidden"}}></i>
+                                                <i className="fas fa-sun" style={{ width: (dayEndPerc - dayStartPerc + "%"), borderRight: "1px solid black", height: "1em", overflow: "hidden" }}></i>
+                                                <i className="fas fa-moon" style={{width: (100 - dayEndPerc + "%"), overflow: "Hidden"}}></i>
+                                                {console.log(100-dayStartPerc-dayEndPerc)}
                                             </div>
                                             <div className="riseSet" style={{
                                                 background: "linear-gradient(90deg, #860f44 "
