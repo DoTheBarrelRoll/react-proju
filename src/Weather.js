@@ -97,6 +97,9 @@ class Weather extends Component {
             let userGmtDiff = utcString.slice(28, 33) / 100 * 3600;
 
             let localTime = this.state.weather.dt + timeZ - userGmtDiff; 
+            let localtimeObj = new Date(localTime * 1000);
+            let localString = localtimeObj.toString();
+            let localtimeString = localString.slice(16, 21);
 
             let windDirection = this.state.weather.wind.deg;
             if (windDirection === "undefined") {
@@ -109,9 +112,23 @@ class Weather extends Component {
             let dayEnd = (Math.floor((this.state.weather.dt + timeZ) / 86400) * 86400 + 86399) +  (this.state.weather.dt - localTime) ;
             let dayStartPerc = Math.round((this.state.weather.sys.sunrise - dayStart) / (dayEnd - dayStart) * 100);
             let dayEndPerc = Math.round((this.state.weather.sys.sunset - dayStart) / (dayEnd - dayStart) * 100);
+            let localTimePerc = Math.round((this.state.weather.dt - dayStart) / (dayEnd - dayStart) * 100);
 
-            console.log(dayStart);
-            console.log(dayEnd);
+            let sunriseTimeObj = new Date((this.state.weather.sys.sunrise + timeZ - userGmtDiff) * 1000);
+            let riseString = sunriseTimeObj.toString();
+            let sunriseString = riseString.slice(16, 21);
+
+            let sunsetTimeObj = new Date((this.state.weather.sys.sunset + timeZ - userGmtDiff) * 1000);
+            let setString = sunsetTimeObj.toString();
+            let sunsetString = setString.slice(16, 21);
+
+            let daylightTimeObj = new Date((this.state.weather.sys.sunset - this.state.weather.sys.sunrise) * 1000);
+            let dayString = daylightTimeObj.toString();
+            let daylightString = dayString.slice(16, 21);
+
+            console.log(riseString)
+            console.log(setString)
+            
 
             return (
                 <div className={this.state.divIdWeatherMain}>
@@ -130,7 +147,7 @@ class Weather extends Component {
                                     </div>
 
                                     <div className="tile is-vertical is-child notification solidwhite">
-                                        <div>
+                                        <div className="padded-bottom">
                                             <table>
                                                 <tbody>
 
@@ -157,18 +174,16 @@ class Weather extends Component {
                                                         <td> <WeatherIcon iconCode={this.state.weather.weather[0].main} /> </td>
                                                         <td className="padded-left"> {this.state.weather.weather[0].description} (cloud coverage {this.state.weather.clouds.all}%)</td>
                                                     </tr>
-
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div className="tile is-child padded-top-more" style={{ height: "2em", verticalAlign: "center" }}>
-                                            <div className="field is-grouped" style={{overflow: "hidden"}}>
-                                                <i className="fas fa-moon" style={{ width: (dayStartPerc + "%"), borderRight: "1px solid black", height: "1em", overflow: "hidden"}}></i>
-                                                <i className="fas fa-sun" style={{ width: (dayEndPerc - dayStartPerc + "%"), borderRight: "1px solid black", height: "1em", overflow: "hidden" }}></i>
-                                                <i className="fas fa-moon" style={{width: (100 - dayEndPerc + "%"), overflow: "Hidden"}}></i>
-                                                {console.log(100-dayStartPerc-dayEndPerc)}
+
+                                        <div className="tile is-child padded-top padded-bottom-more is-padded">
+                                            <div className="tooltipTop" style={{width: "100%", paddingLeft: localTimePerc + "%"}}>
+                                                <i className="fas fa-location-arrow fa-lg" style={{transform: "rotate(135deg)"}}><div className="tooltip"></div></i>
+                                                <span className="tooltiptext">Forecast @ {localtimeString} <br></br> (local time)</span>
                                             </div>
-                                            <div className="riseSet" style={{
+                                            <div className="riseSetBar has-margin-top" style={{
                                                 background: "linear-gradient(90deg, #860f44 "
                                                     + (dayStartPerc - 2)
                                                     + "%, #dda700 "
@@ -179,6 +194,23 @@ class Weather extends Component {
                                                     + (dayEndPerc + 2)
                                                     + "%)"
                                             }}></div>
+
+                                            <div className="field is-grouped padded-bottom has-text-white" style={{marginTop: "-1.47em"}}>
+                                                <div className="tooltipBot" style={{ width: (dayStartPerc + "%"), borderRight: "1px solid black", textAlign: "center"}}>
+                                                    <i className="fas fa-moon fa-lg"></i>
+                                                    <span className="tooltiptext">Sunrise {sunriseString}</span>
+                                                </div>
+
+                                                <div className="tooltipBot" style={{ width: (dayEndPerc - dayStartPerc + "%"), borderRight: "1px solid black", textAlign:"center" }}>
+                                                    <i className="fas fa-sun fa-lg" style={{overflow: "hidden"}}></i>
+                                                    <span className="tooltiptext">Daylight for {daylightString}</span>
+                                                </div>
+
+                                                <div className="tooltipBot" style={{width: (100 - dayEndPerc + "%"), textAlign: "center"}}>
+                                                    <i className="fas fa-moon fa-lg" style={{overflow: "hidden"}}></i>
+                                                    <span className="tooltiptext">Sunset {sunsetString}</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

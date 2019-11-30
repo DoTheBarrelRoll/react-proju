@@ -116,6 +116,10 @@ body {
   margin-top: 0.1em;
 }
 
+.has-margin-top-more {
+  margin-top: 0.5em;
+}
+
 .not-padded {
   padding: 0px !important;
 }
@@ -149,7 +153,7 @@ body {
 }
 
 .padded-top {
-  padding-top: 24px;
+  padding-top: 16px;
 }
 
 .padded-top-more {
@@ -157,7 +161,11 @@ body {
 }
 
 .padded-bottom {
-  padding-bottom: 64px;
+  padding-bottom: 2em;
+}
+
+.padded-bottom-more {
+  padding-bottom: 3em;
 }
 
 .rounded-left {
@@ -399,16 +407,67 @@ body {
   min-height: 1100px;
 }
 
-.riseSet {
+.riseSetBar {
   transition: 200ms;
-  height:1em;
+  height: 1.5em;
   width: 100%;
   border-radius: 0.25em;
 }
 
-.riseSet:hover {
+.riseSetBar:hover {
   transition: 200ms;
-  height: 2em;
+}
+
+.tooltipTop {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipTop .tooltiptext {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 2px 5px;
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  left: auto;
+  margin-left: -85px;
+  top: -190%;
+  opacity: 1;
+  transition: 250ms;
+  font-size: 0.9em;
+}
+
+.tooltipBot {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipBot .tooltiptext {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 2px 5px;
+  position: absolute;
+  z-index: 1;
+  top: 90%;
+  left: auto;
+  margin-left: -60px;
+  opacity: 0;
+  transition: 250ms;
+  font-size: 0.75em;
+}
+
+.tooltipBot:hover .tooltiptext {
+  visibility: visible;
+  top: 110%;
+  opacity: 1;
+  transition: 250ms;
 }
 
 .movie-item {
