@@ -402,9 +402,8 @@ body {
 }
 
 .movie-container {
-  min-width:0;
-  max-height:0;
-  min-height: 1100px;
+  min-width: 0px;
+  min-height: 0px
 }
 
 .riseSetBar {
@@ -480,10 +479,11 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 100%;
 }
 
 .footer {
+  visibility: hidden;
   overflow: hidden;
   position: relative;
 }

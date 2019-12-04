@@ -47,13 +47,22 @@ class Movie extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
+        console.log(this.state.movies)
 
         if (this.state.movies) {
             return (
                 <div className="movie-container">
                     <Slider {...settings}>
                         {
-                            this.state.movies.map(((movie, i) => <div className="movie-item" key={i}><h2>{movie.title}</h2><img alt="Movie poster" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}></img></div>))
+                            this.state.movies.map(((movie, i) =>
+                                <div className="tile is-parent is-horizontal" key={i}>
+                                    <div className="movie-item tile is-child is-4">
+                                        <img alt="Movie poster" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}></img>
+                                    </div>
+                                    <div className="tile is-child is-6">
+                                        <p className="title">{this.state.movies[i].original_title}</p>
+                                    </div>
+                                </div>))
                         }
                     </Slider>
                 </div>
