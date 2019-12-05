@@ -141,7 +141,7 @@ class Weather extends Component {
                     <div className="tile">
                         <div className="tile is-vertical is-12">
                             <div className="tile padded-top-more">
-                                <div className="tile is-parent is-horizontal is-padded solidwhite has-shadow not-rounded ">
+                                <div className="tile is-parent is-padded solidwhite has-shadow not-rounded ">
                                     <div className="tile is-child is-4 notification solidwhite">
                                         <p className="title">{this.state.weather.name + ", " + this.state.countryname}</p>
                                         <p className="subtitle is-spaced text-is-small">{this.state.weather.weather[0].description}</p>
@@ -152,8 +152,9 @@ class Weather extends Component {
                                         </div>
                                     </div>
 
-                                    <div className="tile is-vertical is-child notification solidwhite">
-                                        <div className="padded-bottom"><p className="title is-size-5">Measurements at {userTime} (+{userGmtDiff / 3600}GMT)</p>
+                                    <div className="tile is-vertical is-child notification">
+                                        <div className="padded-bottom">
+                                            <p className="title is-size-5">Measurements at {userTime} (GMT {userGmtDiff / 3600})</p>
                                             <table>
                                                 <tbody>
 
@@ -229,11 +230,11 @@ class Weather extends Component {
                             </div>
                         </div> 
                     </div>
-                    <div className="tile padded-top">
-                        <div className="tile is-child has-shadow not-rounded movie-container red">
+                      <div className="tile">
+                        <div className="tile is-child not-rounded movie-container">
                             <Movie weather={this.state.weather} />
                         </div>
-                    </div>
+                    </div> 
                 </div>
             )
         } else {

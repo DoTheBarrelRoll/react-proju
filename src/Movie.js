@@ -35,41 +35,65 @@ class Movie extends Component {
             .then(movie => this.setState({ movies: movie.results }))
     }
 
-
-
     render() {
         const settings = {
             infinite: true,
             autoplay: true,
+            autoplaySpeed: 10000,
             speed: 700,
             cssEase: "ease-in-out",
             dots: true,
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            pauseOnHover: 1,
+            arrows: false
         };
         console.log(this.state.movies)
 
         if (this.state.movies) {
             return (
-                <div className="movie-container">
+                <div>
                     <Slider {...settings}>
                         {
                             this.state.movies.map(((movie, i) =>
-                                <div className="tile is-parent is-horizontal" key={i}>
-                                    <div className="movie-item tile is-child is-4">
-                                        <img alt="Movie poster" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}></img>
-                                    </div>
-                                    <div className="tile is-child is-6">
-                                        <p className="title">{this.state.movies[i].original_title}</p>
-                                    </div>
-                                </div>))
-                        }
+                                <div className="tile is-12 notification not-rounded is-padded has-shadow" key={i}>
+                                    <div className="tile is-12 is-horizontal">
+                                        <div className="tile is-child is-4 rounded padded-x" style={{ minWidth: "300px" }}>
+                                            <img alt="Movie poster" src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}></img>
+                                        </div>
+
+                                        <div className="tile is-child is-8 movieInfoContainer">
+                                            <p className="title has-text-white has-text-centered is-padded red rounded">{this.state.movies[i].title}</p>
+                                            <p className="subtitle is-7 has-text-centered" style={{ padding: ".2em 0" }}>(Original title: {this.state.movies[i].original_title})</p>
+                                            <p className="has-text-centered is-size-7 padded-x is-dark">Description: "{this.state.movies[i].overview}"</p>
+
+                                            <div className="tile-is 4">
+                                                <table>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td className="padded-right">Stars:</td>
+                                                            <td className="padded-left"> <strong>{this.state.movies[i].vote_average}/10</strong> ({this.state.movies[i].vote_count} votes)</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                                <div className="tile-is 4">
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>))
+                            }
                     </Slider>
                 </div>
-            );
+                    );
+                }
+            }
         }
-    }
-}
-
-
+        
+        
 export default Movie;
