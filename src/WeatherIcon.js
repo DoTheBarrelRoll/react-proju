@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '../node_modules/@fortawesome/react-fontawesome'
 import { faSun, faCloud, faCloudRain, faBolt, faSnowflake, faSmog } from '../node_modules/@fortawesome/free-solid-svg-icons';
 import React, { Component } from 'react';
 
+// Component to match the icon with the weather condition
 class WeatherIcon extends Component {
     constructor(props) {
         super(props);

@@ -1,3 +1,5 @@
+// List of TMDB genres and their ID's matched with a weather condition
+
 let list = {
     "genres": [
         {

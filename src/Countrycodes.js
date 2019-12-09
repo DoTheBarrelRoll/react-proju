@@ -1,3 +1,4 @@
+// List of countrycodes to display the entire country name for the Weather component
 var list = {
     'AF': 'Afghanistan',
     'AX': 'Aland Islands',

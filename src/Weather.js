@@ -58,7 +58,8 @@ class Weather extends Component {
             .catch(error => this.setState({ status: "Something went wrong, try a different location", divIdAlternative: "centered is-shown" }))
     }
 
-    // If the props update, execute the correct API query
+    // When the coordinates are received, execute the Openweathermap query with coordinates
+    // If the users enters a location manually, execute the query with the string
     componentDidUpdate(prevProps) {
         if (prevProps.position !== this.props.position) {
             this.getWeatherCoords()
@@ -86,6 +87,7 @@ class Weather extends Component {
         return <i className={"fas fa-thermometer-" + tempsIcon[Math.round(temps)]}></i>
     }
 
+    // Tells the user if the barometric pressure is below or above average
     checkPressure() {
         var baroPressure = this.state.weather.main.pressure;
         if (!baroPressure) {
@@ -98,8 +100,10 @@ class Weather extends Component {
     }
 
     render() {
+        // Wait for the weather state variable, then render
         if (this.state.weather) {
 
+            // Construct the daylight bar with sunset time, sunrise time and total daylight time
             let timeZ = this.state.weather.timezone;
 
             let dateObj = new Date(this.state.weather.dt * 1000);
@@ -150,41 +154,47 @@ class Weather extends Component {
                                             <p className="title"><WeatherIcon iconCode={this.state.weather.weather[0].main} /> </p>
                                             <strong><p className="padded-left title">{Math.round((this.state.weather.main.temp * 10)) / 10 + " °C"}</p></strong>
                                         </div>
+                                        <a href="https://openweathermap.org/" className="weather-button button">
+                                            <p className="padded-right">Weather source </p>
+                                            <span className="fas fa-external-link-alt"></span>
+                                            </a>
                                     </div>
 
                                     <div className="tile is-vertical is-child notification">
                                         <div className="padded-bottom">
                                             <p className="title is-size-5">Measurements at {userTime} (GMT {userGmtDiff / 3600})</p>
+
+                                        
                                             <table>
                                                 <tbody>
 
                                                     <tr>
                                                         <td className="padded-right">Temperature:</td>
-                                                        <td> {this.doTemps()} </td>
+                                                        <td className="has-text-centered"> {this.doTemps()} </td>
                                                         <td className="padded-left"> <strong>{this.state.weather.main.temp}</strong> °C {"(" + Math.round((this.state.weather.main.temp * 1.8) + 32) + " °F)"}</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td className="padded-right">Wind: </td>
-                                                        <td> <FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} /> </td>
+                                                        <td className="has-text-centered"> <FontAwesomeIcon style={{ transform: windRotate }} icon={faLongArrowAltUp} /> </td>
                                                         <td className="padded-left"> <strong>{this.state.weather.wind.speed}</strong> m/s due <strong>{this.degToCompass()}</strong> ({windDirection}°) </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td className="padded-right">Humidity:</td>
-                                                        <td> <i className="fas fa-tint"></i> </td>
+                                                        <td className="has-text-centered"> <i className="fas fa-tint"></i> </td>
                                                         <td className="padded-left"> <strong>{this.state.weather.main.humidity}</strong> %</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td className="padded-right">Sky:</td>
-                                                        <td> <WeatherIcon iconCode={this.state.weather.weather[0].main} /> </td>
+                                                        <td className="has-text-centered"> <WeatherIcon iconCode={this.state.weather.weather[0].main} /> </td>
                                                         <td className="padded-left"> {this.state.weather.weather[0].description} (cloud coverage {this.state.weather.clouds.all}%)</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td className="padded right">Pressure:</td>
-                                                        <td> <i className="fas fa-weight"></i></td>
+                                                        <td className="has-text-centered"> <i className="fas fa-weight"></i></td>
                                                         <td className="padded-left"> <strong>{this.state.weather.main.pressure}</strong> hPa/mb ({this.checkPressure()}) </td>
                                                     </tr>
                                                 </tbody>

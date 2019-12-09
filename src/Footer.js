@@ -5,10 +5,8 @@ class Footer extends Component {
 render(){
     return(
         <footer className="footer highlight" style={{marginTop: "4em"}}>
-            <div className="has-text-centered">
-                <div className="card-one"></div>
-                <div className="card-two"></div>
-            </div>
+            <a style={{ marginBottom: "8px", color: "none"}} href="https://github.com/DoTheBarrelRoll/react-proju"><p className="fab fa-github fa-4x"></p></a>
+            <p className="">&copy; 2019 Nader Gam ja Miikka Niemeläinen</p>
         </footer>
     )}       
 }

@@ -1,17 +1,16 @@
 /*
 colors: http://paletton.com/#uid=53l0M0kaLKt2iZk6kTpfezQjAsv
 */
-
 ::-webkit-scrollbar {
   width: 0px;
   height: 0px;
 }
 
-::-webkit-scrollbar-track {
+::-webkit-scrollbar {
   background: none;
 }
   
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: none;
 }
 
@@ -25,9 +24,9 @@ body {
   color: #FFF;
 }
 
-.is-dark {
-  background-color: #333;
-  color: #FFF;
+.is-dark-opaque {
+  background-color: #BBE2E8;
+  color: #333;
 }
 
 .is-half {
@@ -149,6 +148,11 @@ body {
 .padded-x {
   padding-right: 1em;
   padding-left: 1em;
+}
+
+.padded-y {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .padded-right {
@@ -458,6 +462,33 @@ body {
   font-size: 0.9em;
 }
 
+.tooltipMovie {
+  position: relative;
+  display: block;
+
+  -webkit-transition: visibility 250ms;
+}
+
+.tooltipMovie .tooltiptext {
+  visibility: visible;
+  background-color: #89C4CC;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 105%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.5em;
+  opacity: 1;
+  transition: 250ms;
+  font-size: 0.75em;
+  left: 0%;
+  width: 100%;
+  border-radius: 4px;
+}
+
 .tooltipBot {
   position: relative;
   display: inline-block;
@@ -512,9 +543,10 @@ body {
 }
 
 .footer {
-  visibility: hidden;
+  visibility: visible;
   overflow: hidden;
   position: relative;
+  text-align: center;
 }
 
 .movieInfoContainer {
@@ -540,4 +572,44 @@ body {
   height: 300px;
   width: 300px;
   background: linear-gradient(45deg, rgba(227, 197, 88, 0.7) 0%, rgba(255, 244, 205, 0.7) 100%);
+}
+
+.more-info-button {
+  color: #FFF;
+  background-color: #333;
+  padding: 1em 1em 1em 1em;
+  transition: 250ms;
+}
+
+.more-info-button:hover {
+  color: #FFF;
+  transition: 250ms;
+  margin-top: -2px;
+  box-shadow: 0px 2px 0 1px #333;
+}
+
+.weather-button {
+  position: absolute;
+  bottom: 10px;
+  background-color: #38818B;
+  color: #FFF;
+  transition: 250ms;
+}
+
+.weather-button:hover {
+  box-shadow: 0px 2px 0 1px #105862;
+  bottom: 12px;
+  transition: 250ms;
+  color: #FFF;
+}
+
+.fa-github {
+  color: #CF5070;
+  transition: 700ms;
+}
+
+.fa-github:hover {
+  color: #544A9E;
+  transition: 700ms ease-in-out;
+  transform: rotate(360deg);
 }
