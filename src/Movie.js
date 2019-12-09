@@ -72,11 +72,11 @@ class Movie extends Component {
 
                                                 <div className="tile is-child is-8 movieInfoContainer is-padded">
                                                     <div className="title has-text-white has-text-centered is-padded cyan" style={{ backgroundColor: data.vibrant, display: "border-box" }}>{this.state.movies[i].title}</div>
-                                                    <div className="is-size-7 has-text-white has-text-centered not-rounded" style={{ backgroundColor: data.darkMuted }}>Original title: {this.state.movies[i].original_title}</div>
+                                                    <div className="is-size-7 has-text-white has-text-centered not-rounded padded-y" style={{ backgroundColor: data.darkMuted }}>Original title: "{this.state.movies[i].original_title}"</div>
 
                                                     <p className="has-text-centered is-size-6 is-padded" style={{ paddingLeft: "40px", paddingRight: "40px", backgroundColor: data.muted, color: "white" }}>"{this.state.movies[i].overview}"</p>
 
-                                                    <div className="tile is-6 padded-top">
+                                                    <div className="tile padded-top">
                                                         <table>
                                                             <tbody>
 
@@ -91,16 +91,21 @@ class Movie extends Component {
                                                                     <td className="has-text-centered"> <i className="fas fa-calendar-check"></i></td>
                                                                     <td className="padded-left"><strong>{movie.release_date}</strong></td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <td className="padded-right">Original language: </td>
+                                                                    <td className="has-text-centered"> <i className="fas fa-language"></i></td>
+                                                                    <td className="padded-left" style={{textTransform: "capitalize"}}>{movie.original_language}</td>
+                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
 
-                                                    <div className="tile is-6 padded-top">
-                                                    <a className="more-info-button button" href={"https://www.themoviedb.org/movie/" + movie.id} target="_blank" rel="noopener noreferrer" style={{backgroundColor: data.vibrant}}>
+
+                                                    <a className="movie-button button" href={"https://www.themoviedb.org/movie/" + movie.id} target="_blank" rel="noopener noreferrer" style={{backgroundColor: data.vibrant}}>
                                                         <p className="padded-right">TMDB page</p>
                                                         <span className="fas fa-external-link-alt"></span>
                                                     </a>
-                                                    </div>
                                                 </div>
                                             )}
 

@@ -151,8 +151,8 @@ body {
 }
 
 .padded-y {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 .padded-right {
@@ -411,6 +411,10 @@ body {
   cursor: pointer;
 }
 
+.linear-gradient {
+  background: linear-gradient(35deg, #CF5070 0%, #38818B 100%);
+}
+
 .gradientTitle {
   font-size: 3em;
   font-weight: 800;
@@ -543,10 +547,24 @@ body {
 }
 
 .footer {
-  visibility: visible;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 0 10px 1px whitesmoke;
+}
+
+.card {
+  display: inline-block;
+  transition: 250ms;
+  border: 1px solid whitesmoke;
+}
+
+.card:hover {
+  transition: 250ms;
+  transform: translate(0px, -2px);
+  box-shadow: 5px 5px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+.column .card {
+  display: inline-block;
 }
 
 .movieInfoContainer {
@@ -556,41 +574,26 @@ body {
   margin-bottom: 32px !important;
 }
 
-.card-one {
+.movie-button {
   position: absolute;
-  left: -200px;
-  bottom: 45px;
-  height: 200px;
-  width: 400px;
-  background: linear-gradient(225deg, rgba(62, 49, 140, .5) 0%, rgba(118, 109, 183, 0.5) 100%);
-}
-
-.card-two {
-  position: absolute;
-  left: 200px;
-  top: 45px;
-  height: 300px;
-  width: 300px;
-  background: linear-gradient(45deg, rgba(227, 197, 88, 0.7) 0%, rgba(255, 244, 205, 0.7) 100%);
-}
-
-.more-info-button {
+  bottom: 1.1em;
   color: #FFF;
   background-color: #333;
   padding: 1em 1em 1em 1em;
   transition: 250ms;
 }
 
-.more-info-button:hover {
+.movie-button:hover {
   color: #FFF;
+  bottom: calc(1.1em + 2px);
   transition: 250ms;
-  margin-top: -2px;
   box-shadow: 0px 2px 0 1px #333;
 }
 
 .weather-button {
   position: absolute;
-  bottom: 10px;
+  bottom: 1em;
+  right: 1em;
   background-color: #38818B;
   color: #FFF;
   transition: 250ms;
@@ -598,18 +601,18 @@ body {
 
 .weather-button:hover {
   box-shadow: 0px 2px 0 1px #105862;
-  bottom: 12px;
+  bottom: calc(1em + 2px);
   transition: 250ms;
   color: #FFF;
 }
 
 .fa-github {
-  color: #CF5070;
+  color: whitesmoke;
   transition: 700ms;
 }
 
 .fa-github:hover {
-  color: #544A9E;
+  color: whitesmoke;
   transition: 700ms ease-in-out;
   transform: rotate(360deg);
 }

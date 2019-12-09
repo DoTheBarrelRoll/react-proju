@@ -161,20 +161,6 @@ class SearchBar extends Component {
                                         <p className="has-margin infoText">This is <strong>Sääkino™</strong>. It recommends movies based on the weather observed at the given location. Type in your city above to see what you should be watching now!</p>
                                     </div>
                                 </div>
-
-                                <div className="level-item tile has-shadow purple has-text-centered is-padded is-3 padded-top">
-                                    <div>
-                                        <i className="fa fa-clock fa-2x"></i>
-                                        <p className="has-margin infoText">Sääkino uses and shows the most recent weather conditions. </p>
-                                    </div>
-                                </div>
-
-                                <div className="level-item has-shadow has-text-centered red tile is-padded is-3 padded-top">
-                                    <div>
-                                        <i className="fa fa-film fa-2x"></i>
-                                        <p className="has-margin infoText">Enjoy movies that are relevant to you right now!</p>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
