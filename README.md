@@ -9,4 +9,4 @@ Sääkino is an application that suggests movies to you based on a location's we
 REACT_APP_TMDBKEY=[YOUR_TMDB_KEY]
 REACT_APP_WEATHERKEY=[YOUR_OPENWEATHERMAP_KEY]
 ```
-5. Start you application by running `npm run dev` on the root of your project.
+5. Start the application by running `npm run dev` on the root of your project.
