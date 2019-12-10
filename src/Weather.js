@@ -152,8 +152,8 @@ class Weather extends Component {
                                             <p className="title"><WeatherIcon iconCode={this.state.weather.weather[0].main} /> </p>
                                             <strong><p className="padded-left title">{Math.round((this.state.weather.main.temp * 10)) / 10 + " °C"}</p></strong>
                                         </div>
-                                        <a href={"https://openweathermap.org/city/" + this.state.weather.id}  className="weather-button button">
-                                            <p className="padded-right">Weather source </p>
+                                        <a href={"https://openweathermap.org/city/" + this.state.weather.id} className="weather-button button">
+                                            <p className="padded-right"><strong>Weather source</strong> </p>
                                             <span className="fas fa-external-link-alt"></span>
                                             </a>
                                     </div>
@@ -199,24 +199,24 @@ class Weather extends Component {
                                             </table>
                                         </div>
 
-                                        <div className="tile is-child padded-top">
+                                        <div className="tile is-child">
                                             <div className="tooltipTop" style={{ width: "105%", paddingLeft: localTimePerc + "%", marginLeft: "-2%" }}>
                                                 <i className="fas fa-location-arrow fa-lg" style={{ transform: "rotate(135deg)" }}><div className="tooltip"></div></i>
-                                                <span className="tooltiptext"><i className="fas fa-clock fa-lg"></i><br></br>{localtimeString} (local time)</span>
+                                                <span className="tooltiptext"><i className="fas fa-clock" style={{marginRight:"0.5em"}}></i>{localtimeString} (local time)</span>
                                             </div>
                                             <div className="riseSetBar has-margin-top" style={{
-                                                background: "linear-gradient(90deg, #860f44 "
+                                                background: "linear-gradient(90deg, #1B2B6D "
                                                     + (dayStartPerc - 2)
                                                     + "%, #dda700 "
                                                     + (dayStartPerc + 2)
                                                     + "%, #dda700 "
                                                     + (dayEndPerc - 2)
-                                                    + "%, #522222 "
+                                                    + "%, #1B2B6D "
                                                     + (dayEndPerc + 2)
                                                     + "%)"
                                             }}></div>
 
-                                            <div className="field is-grouped padded-bottom has-text-white" style={{ marginTop: "-1.47em" }}>
+                                            <div className="field is-grouped has-text-white" style={{ marginTop: "-1.8em" }}>
                                                 <div className="tooltipBot" style={{ width: (dayStartPerc + "%"), borderRight: "1px solid black", textAlign: "center" }}>
                                                     <i className="fas fa-moon fa-lg"></i>
                                                     <span className="tooltiptext">Sunrise {sunriseString}</span>

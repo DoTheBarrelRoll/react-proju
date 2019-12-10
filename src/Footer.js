@@ -4,18 +4,20 @@ class Footer extends Component {
 
     render() {
         return (
-            <footer className="footer has-text-centered" style={{marginTop: "2em"}}>
-                <div className="column">
+            <footer className="footer has-text-centered" style={{marginTop: "3em"}}>
+                <div className="column" style={{}}>
 
                     <a className="card linear-gradient has-margin" href="https://github.com/DoTheBarrelRoll/react-proju" alt="Project page link">
                         <div className="card-content">
                             <div className="media">
                                 <div className="media-left">
-                                    <i className="fab fa-github fa-4x"></i>
+                                    <figure className="image is-48x48">
+                                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Avatar" className="fa-github is-rounded"></img>
+                                    </figure>
                                 </div>
                                 <div className="media-content">
-                                    <p className="title is-6 has-text-white">Enter project page</p>
-                                    <p className="subtitle is-7 padded-top has-text-white">&copy; 2019 us two</p>
+                                    <p className="title is-5 has-text-white">Sääkino project page</p>
+                                    <p className="subtitle is-7 has-text-white">&copy; 2019 us two</p>
                                 </div>
                             </div>
                         </div>

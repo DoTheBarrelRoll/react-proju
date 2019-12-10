@@ -72,9 +72,9 @@ class Movie extends Component {
                                                     <div className="title has-text-white has-text-centered is-padded cyan" style={{ backgroundColor: data.vibrant, display: "border-box" }}>{this.state.movies[i].title}</div>
                                                     <div className="is-size-7 has-text-white has-text-centered not-rounded padded-y" style={{ backgroundColor: data.darkMuted }}>Original title: "{this.state.movies[i].original_title}"</div>
 
-                                                    <p className="has-text-centered is-size-6 is-padded" style={{ paddingLeft: "40px", paddingRight: "40px", backgroundColor: data.muted, color: "white" }}>"{this.state.movies[i].overview}"</p>
+                                                    <p className="has-text-centered is-size-6 is-padded cyan" style={{ paddingLeft: "40px", paddingRight: "40px", backgroundColor: data.muted, color: "white" }}>"{this.state.movies[i].overview}"</p>
 
-                                                    <div className="tile padded-top">
+                                                    <div className="tile is-6 padded-top">
                                                         <table>
                                                             <tbody>
 
@@ -95,15 +95,22 @@ class Movie extends Component {
                                                                     <td className="has-text-centered"> <i className="fas fa-language"></i></td>
                                                                     <td className="padded-left" style={{textTransform: "capitalize"}}>{movie.original_language}</td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        <a className="movie-button button red" href={"https://www.themoviedb.org/movie/" + movie.id} target="_blank" rel="noopener noreferrer">
+                                                                            <p className="padded-right"><strong>TMDB Page</strong></p>
+                                                                            <span className="fas fa-external-link-alt"></span>
+                                                                        </a>  
+                                                                    </td>
+                                                                </tr>
+
                                                             </tbody>
-                                                        </table>
+
+                                                        </table>                                                      
+                                                        
                                                     </div>
 
-
-                                                    <a className="movie-button button" href={"https://www.themoviedb.org/movie/" + movie.id} target="_blank" rel="noopener noreferrer" style={{backgroundColor: data.vibrant}}>
-                                                        <p className="padded-right">TMDB page</p>
-                                                        <span className="fas fa-external-link-alt"></span>
-                                                    </a>
                                                 </div>
                                             )}
 
