@@ -138,8 +138,6 @@ class Weather extends Component {
             let dayString = daylightTimeObj.toString();
             let daylightString = dayString.slice(16, 21);
 
-            console.log(this.state.weather)
-
             return (
                 <div className={this.state.divIdWeatherMain}>
                     <div className="tile">

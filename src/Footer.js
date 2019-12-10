@@ -21,7 +21,7 @@ class Footer extends Component {
                         </div>
                     </a>
                     
-                    <div className="card has-margin">
+                    <a className="card has-margin" href="https://github.com/DoTheBarrelRoll">
                         <div className="card-content">
                             <div className="media">
                                 <div className="media-left">
@@ -35,9 +35,9 @@ class Footer extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div className="card has-margin">
+                    <a className="card has-margin" href="https://github.com/kissakalae">
                         <div className="card-content">
                             <div className="media">
                                 <div className="media-left">
@@ -51,7 +51,7 @@ class Footer extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                 </div>
             </footer>

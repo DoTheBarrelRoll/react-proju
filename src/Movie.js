@@ -30,7 +30,7 @@ class Movie extends Component {
     componentDidMount = () => {
         fetch('https://api.themoviedb.org/3/discover/movie?api_key='
             + process.env.REACT_APP_TMDBKEY
-            + "&language=en-US&sort_by=popularity.desc&include_adult=false&with_keywords=&include_video=false&page=1&with_genres="
+            + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="
             + this.getGenres(), {
             method: 'get'
         })
@@ -39,8 +39,6 @@ class Movie extends Component {
     }
 
     render() {
-
-        console.log(this.state.movies)
         // React-slick carousel settings
         const settings = {
             infinite: true,
