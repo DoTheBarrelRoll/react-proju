@@ -17,6 +17,7 @@ colors: http://paletton.com/#uid=53l0M0kaLKt2iZk6kTpfezQjAsv
 body {
   background-color: #89C4CC;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .cyan {
@@ -413,6 +414,7 @@ body {
 
 .linear-gradient {
   background: linear-gradient(35deg, #CF5070 0%, #38818B 100%);
+  color: white;
 }
 
 .gradientTitle {
@@ -455,6 +457,7 @@ body {
   text-align: center;
   border-radius: 6px;
   padding: 2px 5px;
+  padding-top: 3px;
   position: absolute;
   z-index: 1;
   width: 150px;
@@ -469,8 +472,7 @@ body {
 .tooltipMovie {
   position: relative;
   display: block;
-
-  -webkit-transition: visibility 250ms;
+  transition: visibility 250ms;
 }
 
 .tooltipMovie .tooltiptext {
@@ -524,7 +526,7 @@ body {
 
 .movie-container {
   min-width: 0px;
-  min-height: 0px;
+  min-height: min-content;
   max-width: 100%;
 }
 

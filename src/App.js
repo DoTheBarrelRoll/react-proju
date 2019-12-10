@@ -9,7 +9,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { loading: true, position: null, location: null, searchString: null };
+    this.state = { position: null, location: null, searchString: null };
   }
 
   // Callback function to fetch location data from SearchBar component
@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     return (
 
-      <div className="">
+      <div>
 
         <SearchBar locationData={this.fetchCoords.bind(this)} locationName={this.fetchSearchString.bind(this)} />
 

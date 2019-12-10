@@ -4,7 +4,7 @@ class Footer extends Component {
 
     render() {
         return (
-            <footer className="footer has-text-centered">
+            <footer className="footer has-text-centered" style={{marginTop: "2em"}}>
                 <div className="column">
 
                     <a className="card linear-gradient has-margin" href="https://github.com/DoTheBarrelRoll/react-proju" alt="Project page link">

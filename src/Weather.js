@@ -14,7 +14,7 @@ class Weather extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: "Waiting for weather...", weather: null, countryname: null, error: null,
+            weather: null, countryname: null, error: null,
             divIdWeatherMain: "has-margin-top",
             divIdAlternative: "is-hidden centered"
         };
@@ -41,7 +41,7 @@ class Weather extends Component {
             method: 'get'
         })
             .then(result => result.json())
-            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "" }))
+            .then(weather => this.setState({ weather: weather, countryname: Countrynames.getName(weather.sys.country), divIdWeatherMain: "" }))
             .catch(error => this.setState({ error: "We couldn't find you :(" }))
     }
 
@@ -54,8 +54,8 @@ class Weather extends Component {
             + '&units=metric&appid=4ab2152ab8763e7e54aae7d10515dc07')
             .then(response => this.handleErrors(response))
             .then(result => result.json())
-            .then(weather => this.setState({ weather: weather, status: "", countryname: Countrynames.getName(weather.sys.country) }))
-            .catch(error => this.setState({ status: "Something went wrong, try a different location", divIdAlternative: "centered is-shown" }))
+            .then(weather => this.setState({ weather: weather, countryname: Countrynames.getName(weather.sys.country) }))
+            .catch(error => this.setState({ divIdAlternative: "centered is-shown" }))
     }
 
     // When the coordinates are received, execute the Openweathermap query with coordinates
@@ -202,7 +202,7 @@ class Weather extends Component {
                                         <div className="tile is-child padded-top">
                                             <div className="tooltipTop" style={{ width: "105%", paddingLeft: localTimePerc + "%", marginLeft: "-2%" }}>
                                                 <i className="fas fa-location-arrow fa-lg" style={{ transform: "rotate(135deg)" }}><div className="tooltip"></div></i>
-                                                <span className="tooltiptext">Observation @ {localtimeString} <br></br> (local time)</span>
+                                                <span className="tooltiptext"><i className="fas fa-clock fa-lg"></i><br></br>{localtimeString} (local time)</span>
                                             </div>
                                             <div className="riseSetBar has-margin-top" style={{
                                                 background: "linear-gradient(90deg, #860f44 "
@@ -246,7 +246,13 @@ class Weather extends Component {
                 </div>
             )
         } else {
-            return (<div className={this.state.divIdAlternative}>Well shucks. :( According to our sources that place does not exist.</div>)
+            return (<div className={this.state.divIdAlternative}>
+                        <div className="centerBox solidwhite has-shadow has-text-centered">
+                            <p className="title" style={{transform: "rotate(90deg)", marginBottom: "-0.5em", fontFamily: "Arial"}}>:(</p>
+                            <p className="title is-5 padded-top"><strong>Well, shucks</strong></p>
+                            <p className="subtitle is-6 padded-top"> According to our sources that place does not exist.<br></br> That might be due to a typo - if not, it's on <strong><a href="https://downforeveryoneorjustme.com/openweathermap.org">Openweathermap's</a></strong> end.</p>
+                        </div>
+                    </div>)
         }
     }
 }
