@@ -124,7 +124,7 @@ class SearchBar extends Component {
                         <div className={this.state.divIdCenterBox} id="CenterBox">
 
                             {/* Logo/title within the searchbox*/}
-                            <h1 className={this.state.divIdHeader}> Sääkino<i className="fa fa-cloud" style={{ marginLeft: "-1.88em", marginTop: "0.07em", height: "0.4em" }}></i></h1>
+                            <h1 className={this.state.divIdHeader}> Sääkino</h1>
 
                             {/* This is to make the items within the CenterBox on the same level and keep the block together*/}
                             <div className={this.state.divIdCenterToNav}>
