@@ -525,7 +525,7 @@ body {
 
 .movie-container {
   min-width: 0px;
-  min-height: calc(min-content + 100px);
+  min-height: min-content;
   max-width: 100%;
 }
 
